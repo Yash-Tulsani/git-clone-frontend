@@ -1,0 +1,61 @@
+.navbarContainer{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+    /* background-color: navajowhite !important; */
+}
+
+.logoContainer{
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logoGroup{
+    /* width: 35px;
+    height: 35px; */
+    overflow: hidden;
+    /* background-color: aqua; */
+    object-fit: contain;
+}
+
+.logo{
+    width: 60px;
+}
+
+.navbarLinks{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.navLinkText{
+    text-decoration: none;
+    color:black;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all;
+    transition-duration: 100ms;
+}
+
+.navLinkText:hover{
+    color: #F75700;
+}
+
+.navbarButton{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.navbarButtonsContainer{
+    display: flex;
+    align-items: center;
+    gap:30px;
+}
