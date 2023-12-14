@@ -29,6 +29,10 @@ const navLinks=[
         name:"Contact",
         link:"/contact"
     },
+    {
+        name:"Status",
+        link:"/status"
+    },
 ]
 
 const languageOptions=[
