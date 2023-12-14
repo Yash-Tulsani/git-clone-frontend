@@ -1,0 +1,98 @@
+.container{
+    width: 100%;
+    height: 100%;
+	position: absolute;
+	top: 0;
+	left:0;
+	/* background: -moz-linear-gradient(45deg, #f9d26e 0%, #f9d26e 29%, #d911f2 66%, #ffa079 100%);
+	background: -webkit-linear-gradient(45deg, #f9d26e 0%, #f9d26e 29%, #d911f2 66%, #ffa079 100%);
+	background: linear-gradient(45deg, #f9d26e 0%, #f9d26e 29%, #d911f2 66%, #ffa079 100%);	 */
+    -webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+    background-size: 400% 400%;
+    display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-evenly;
+	overflow: hidden;
+	position: relative; 
+	z-index: 1;
+}
+
+.container::before, 
+.container::after {
+	content: "";
+	width: 50vmax;
+	height: 50vmax;
+	position: absolute;
+	background: #ff891451;
+	left: -20vmin;
+	top: -20vmin;
+	animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+	z-index: -1;
+	will-change: border-radius, transform;
+	transform-origin: 30% 30%;
+	pointer-events: none; 
+}
+
+.container::after {
+    width: 70vmin;
+    height: 70vmin;
+    left: auto;
+    right: -10vmin;
+    top: auto;
+    bottom: 0;
+    animation: morph 10s linear infinite alternate, spin 26s linear infinite reverse;
+    transform-origin: 10% 10%; 
+}
+
+@keyframes morph {
+    0% {
+      border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%; }
+    100% {
+      border-radius: 40% 60%; } 
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(1turn); 
+    } 
+  }
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0 50%
+	}
+}
+

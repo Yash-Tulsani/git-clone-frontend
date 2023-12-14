@@ -1,0 +1,13 @@
+.container{
+    background: url(/public/images/search-panel-banner.png);
+    z-index: 5;
+    width: 70%;
+    height: calc(100% + 50px);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-repeat: no-repeat;
+    background-position: right;
+    /* background-color: aquamarine; */
+    background-size: cover;
+}
