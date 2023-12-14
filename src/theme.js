@@ -10,13 +10,11 @@ const theme = createTheme({
         },
         text: {
         primary: '#0E2E50',
+        secondary: '#464d61',
         },
     },
     typography: {
-        fontFamily: [
-            'Roboto',
-            'sans-serif',
-        ].join(','),
+        fontFamily: ['Montserrat', 'Ubuntu'].join(','),
     },
 });
 
