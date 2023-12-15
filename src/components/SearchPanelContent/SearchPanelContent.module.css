@@ -19,6 +19,7 @@
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 12px;
+    position: relative;
 }
 
 .searchBarInput{
@@ -33,6 +34,7 @@
     box-shadow: 0 0 5px rgb(168, 168, 168);
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    z-index: 2;
 }
 
 .searchButton{
@@ -45,6 +47,7 @@
     border-bottom-right-radius: 10px;
     gap: 10px;
     cursor: pointer;
+    z-index: 2;
 }
 
 .searchButtonText{
@@ -57,7 +60,7 @@
     font-size: 40px;
     max-width: 60%;
     text-wrap: wrap;
-    font-weight: 600;
+    font-weight: 800;
     margin-bottom: 30px;
 }
 
