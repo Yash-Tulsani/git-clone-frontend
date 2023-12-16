@@ -4,19 +4,19 @@ const theme = createTheme({
     palette: {
         primary: {
         main: '#FFFFFF',
+        dark: '#a8a8a8'
         },
         secondary: {
         main: '#F58F3C',
+        dark: '#fc7c14'
         },
         text: {
         primary: '#0E2E50',
+        secondary: '#464d61',
         },
     },
     typography: {
-        fontFamily: [
-            'Roboto',
-            'sans-serif',
-        ].join(','),
+        fontFamily: ['Montserrat', 'Ubuntu'].join(','),
     },
 });
 

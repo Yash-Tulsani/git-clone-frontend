@@ -1,0 +1,25 @@
+.container{
+    z-index: 3 !important;
+    border: 1px solid rgb(168, 168, 168);
+    border-radius: 10px;
+    position: absolute;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    padding: 10px 0;
+}
+
+.searchResultItem{
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    padding: 15px;
+    padding: 7px 14px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.searchResultItem:hover{
+    background-color: #f0eded;
+}
