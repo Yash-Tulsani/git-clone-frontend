@@ -4,6 +4,8 @@ import { useTheme } from '@mui/material'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import Select from 'react-select';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const logos=[
     "Ministry_of_Rural_Development.png",
@@ -44,6 +46,7 @@ const languageOptions=[
 const Navbar = () => {
     // State Variables
     const theme = useTheme();
+    const matches768px=useMediaQuery('(max-width:768px)')
     const [language, setLanguage] = React.useState('');
 
     const [isSearchable, setIsSearchable] = useState(true);
@@ -78,17 +81,21 @@ const Navbar = () => {
                 ))
             }
         </div>
-        <div className={styles.navbarLinks}>
-            {
-                navLinks.map((navLink,index)=>(
-                    <div key={index} className={styles.navLink}>
-                        <Link to={navLink.link} className={styles.navLinkText}>
-                            {navLink.name}
-                        </Link>
-                    </div>
-                ))  
-            }
-        </div>
+        {
+            !matches768px &&
+            <div className={styles.navbarLinks}>
+                {
+                    navLinks.map((navLink,index)=>(
+                        <div key={index} className={styles.navLink}>
+                            <Link to={navLink.link} className={styles.navLinkText}>
+                                {navLink.name}
+                            </Link>
+                        </div>
+                    ))  
+                }
+            </div> 
+        }
+        
         <div className={styles.navbarButtonsContainer}>
             <Button variant="contained" style={buttonStyle}>
                 Login
@@ -104,6 +111,10 @@ const Navbar = () => {
                 placeholder="Select Language"
             />
         </div>
+        {
+            matches768px &&
+            <HamburgerMenu/>
+        }
     </div>
   )
 }
