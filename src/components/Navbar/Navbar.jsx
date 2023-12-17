@@ -58,16 +58,14 @@ const Navbar = () => {
     };
 
     // Styles
-    const languageSelectStyle={
-        control: (provided, state) => ({
-            ...provided,
-            minWidth: "175px",
-        }),
-    }
 
     const buttonStyle={
         backgroundColor:theme.palette.secondary.main,
         color:theme.palette.primary.main,
+        fontSize: "0.9rem",
+        [theme.breakpoints.down('md')]:{
+            fontSize: "0.75rem",
+        }
     }
 
   return (
@@ -107,7 +105,6 @@ const Navbar = () => {
                 isSearchable={isSearchable}
                 name="language"
                 options={languageOptions}
-                styles={languageSelectStyle}
                 placeholder="Select Language"
             />
         </div>
