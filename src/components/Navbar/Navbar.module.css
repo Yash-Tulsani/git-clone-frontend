@@ -1,12 +1,22 @@
+.box{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgb(204, 204, 204);
+}
+
 .navbarContainer{
     width: 100%;
     height: 80px;
+    max-width: 1240px;
     display: flex;
     align-items: center;
     padding: 0 15px;
-    justify-content: space-between;
-    box-shadow: 0 0 15px rgb(204, 204, 204);
-    max-width: 100vw;
+    justify-content: space-between; 
 }
 
 .logoContainer{

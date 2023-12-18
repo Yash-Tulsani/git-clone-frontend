@@ -69,7 +69,8 @@ const Navbar = () => {
     }
 
   return (
-    <div className={styles.navbarContainer} style={{backgroundColor:theme.palette.primary.main}}>
+    <div style={{backgroundColor:theme.palette.primary.main}} className={styles.box}>
+        <div className={styles.navbarContainer} style={{backgroundColor:theme.palette.primary.main}}>
         <div className={styles.logoContainer}>
             {
                 logos.map((logo,index)=>(
@@ -112,6 +113,7 @@ const Navbar = () => {
             matches768px &&
             <HamburgerMenu/>
         }
+        </div>
     </div>
   )
 }
