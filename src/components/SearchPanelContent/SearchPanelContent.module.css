@@ -1,14 +1,23 @@
+.box{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .container{
     display: flex;
     padding: 0 35px;
     flex-direction: column;
     justify-content: center;
-    position: absolute;
-    top: 0;
-    left:0;
     width: 100%;
+    max-width: 1240px;
     height: 100%;
-    /* background-color: rgba(127, 255, 212, 0.324); */
+    max-height: 1080px;
     z-index: 2;
 }
 
@@ -35,6 +44,7 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     z-index: 2;
+    font-size: 1rem;
 }
 
 .searchButton{
@@ -45,29 +55,98 @@
     /* box-shadow: 0 0 5px rgb(134, 134, 134); */
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    gap: 10px;
+    gap: 8px;
     cursor: pointer;
     z-index: 2;
+    padding: 0 10px;
 }
 
 .searchButtonText{
     font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .tagline{
     font-family: 'Montserrat', sans-serif;
-    font-size: 40px;
+    font-size: 2.5rem;
     max-width: 60%;
     text-wrap: wrap;
     font-weight: 800;
     margin-bottom: 30px;
 }
 
-.descipton{
+.descripton{
     font-family: 'Ubuntu', sans-serif;
-    font-size: 20px;
+    font-size: 1.2rem;
     max-width: 60%;
     font-weight: 500;
     text-wrap: wrap;
+}
+
+.highlightedText{
+    font-size: 1.4rem;
+}
+
+@media (max-width: 1024px){
+    .tagline{
+        font-size: 2rem;
+    }
+    .descripton{
+        font-size: 1rem;
+    }
+    .highlightedText{
+        font-size: 1.2rem;
+    }
+    .searchButtonText{
+        font-size: 0.85rem;
+    }
+    .searchBar{
+        height: 40px;
+    }
+    .searchBarInput{
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px){
+    .tagline{
+        font-size: 1.5rem;
+    }
+    .descripton{
+        font-size: 0.8rem;
+    }
+    .highlightedText{
+        font-size: 1rem;
+    }
+    .searchButtonText{
+        font-size: 0.75rem;
+    }
+    .searchBar{
+        height: 35px;
+    }
+    .searchBarInput{
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 600px){
+    .searchButtonText{
+        font-size: 0.65rem;
+    }
+    .searchBarInput{
+        font-size: 0.65rem;
+    }
+    .tagline{
+        max-width: 100%;
+    }
+    .descripton{
+        max-width: 100%;
+    }
+    .searchBarInput{
+        min-width: 75%;
+    }
+    .searchButton{
+        min-width: 20%;
+    }
 }

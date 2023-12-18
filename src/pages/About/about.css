@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+.mainAboutDiv {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.home12 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    /* padding-top: 10rem; */
+  }
+  
+  .home12 .image12 {
+    flex: 1 1 45rem;
+  }
+  
+  .home12 .image12 img {
+    width: 100%;
+  }
+  
+  .home12 .content {
+    flex: 1 1 35rem;
+  }
+  
+  .home12 .content h3 {
+    font-size: 3rem;
+    color: var(--black);
+    line-height: 1.8;
+    text-shadow: var(--text-shadow);
+  }
+  
+  .home12 .content p {
+    font-size: 1.7rem;
+    color: var(--light-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+  }
+
+
+  .serv {
+    padding-top: 20px;
+    display: grid;
+    height: 90%;
+    place-items: center;
+    background: #eeeeee;
+  }
+  .container888 .box888:hover{
+    transform: scale(1.1);
+  } 
+  .container888 {
+    max-width: 1145px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .container888 .box888 {
+    width: calc(33% - 20px);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 28px;
+    border-radius: 15px;
+  }
+
+  .container888 .box888 .image888 {
+    margin: 10px 0;
+    height: 250px;
+    width: 250px;
+    background: #effffd;
+    padding: 3px;
+    border-radius: 10%;
+  }
+  .box888 .image888 img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10%;
+    object-fit: cover;
+    border: 2px solid #fff;
+  }
+  .box888 p,
+.box2888 p {
+  text-align: justify;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.box888 .name_job888 {
+  margin: 10px 0 3px 0;
+  color: #8e44ad;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.container_ss{
+    background:#fff;
+    max-width: 1350px;
+    display: flex;
+    justify-content: space-between;
+     align-items: center; 
+    flex-wrap: wrap;
+    padding: 2px;
+    padding-left:180px;
+    height:400px;
+  
+  }
+  
+  
+  
+  .container_ss :hover{
+    transform: scale(1.05);
+  } 
+  
+  .container_ss .box,.container_ss .box2{
+    width: calc(33% - 30px);
+    background:#fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1px 28px;
+    /* border-radius: 25px; */
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+
+  .box .quote i,.box2 .quote i{
+    margin-top: 1px;
+    font-size: 45px;
+    color: #17c0eb
+    }
+    /* 
+    .box :hover{
+      transform: scale(1.05);
+    } */
+    
+    .container_ss .box .image{
+      margin: 1px 0;
+      height: 50px;
+      width: 50px;
+      background: #effffd;
+      padding: 0px;
+      border-radius: 50%;
+    }
+    .box .image img{
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+    
+    .container_ss .box2 .image2{
+      margin: 1px 0;
+      height: 250px;
+      width: 250px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 50%;
+    }
+    .box2 .image2 img{
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #fff;
+    }
+    
+    .box p, .box2 p{
+      text-align: justify;
+      /* margin-top: 8px; */
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .box .name_job,.box2 .name_job{
+      margin: 5px 0 3px 0;
+      color: #8e44ad;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
