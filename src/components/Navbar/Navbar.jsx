@@ -36,6 +36,10 @@ const navLinks=[
         name:"Status",
         link:"/status"
     },
+    {
+        name:"FPO",
+        link:"/fpo"
+    },
 ]
 
 const Navbar = () => {
