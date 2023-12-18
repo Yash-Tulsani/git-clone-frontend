@@ -161,27 +161,28 @@
 
 @media (max-width:1024px){
     .subheading{
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     .heading,.statsNumber{
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         line-height: 30px;
     }   
     .description{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     .backgroundText{
         font-size: 4rem;
     }
     .statsText{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
     .contactUsButton{
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
 }
 
-@media (max-width:600px){
+
+@media (max-width:768px){
     .container{
         flex-direction: column;
         gap: 25px;
@@ -193,7 +194,7 @@
         font-size: 0.7rem;
     }
     .heading,.statsNumber{
-        font-size: 1rem;
+        font-size: 0.9rem;
         line-height: 25px;
     }   
     .description{

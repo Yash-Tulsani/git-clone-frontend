@@ -59,7 +59,8 @@ const SearchPanelContent = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.box}>
+      <div className={styles.container}>
         <div className={styles.tagline}  style={taglineStyle}>{tagline}</div>
         <div className={styles.searchBar} ref={ref}>
             <input type="text" placeholder={searchBarPlaceholder} value={search} onChange={handleInputChange}  className={styles.searchBarInput} />
@@ -75,6 +76,7 @@ const SearchPanelContent = () => {
         <div className={styles.descripton} style={descriptonStyle}>
           Empowering <span className={styles.highlightedText} style={highlightedTextStyle}>FPOs</span> and <span className={styles.highlightedText} style={highlightedTextStyle}>Farmers</span> for <span className={styles.highlightedText} style={highlightedTextStyle}>Sustainable Growth</span> - Your Resourceful Agricultural Hub.
         </div>
+      </div>
     </div>
   )
 }
