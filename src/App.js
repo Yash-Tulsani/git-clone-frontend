@@ -4,19 +4,13 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
-<<<<<<< HEAD
 import Contact from './pages/Contact/Contact';
 import Status from './pages/Status/Status';
 import Chatbot from './pages/Chatbot/Chatbot';
 import Services from './pages/Services/Services';
 import Checkout from './pages/Checkout/Checkout'
-=======
-import Contact from './components/Contact/Contact';
-import Status from './components/Status/Status';
-import Services from './pages/Services/Services'
 import About from './pages/About/about';
 import Dashboard from './pages/Dashboard/Dashboard';
->>>>>>> upstream/main
 
 function App() {
 

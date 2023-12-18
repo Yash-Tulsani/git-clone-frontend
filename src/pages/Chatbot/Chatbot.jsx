@@ -7,7 +7,7 @@ import sendIcon from "./send.png";
 import sihIcon from "./sih.jpg";
 import acios from "axios"
 import axios from 'axios';
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,11 +18,17 @@ const Chatbot = () => {
     setIsOpen(!isOpen);
   };
 
+  const navigate = useNavigate();
+
   
-const intentResponse = {
-  "service-near-me": ()=>{
-      redirect("/")
-  }
+const intentResponse =(intentName)=> {
+    if(intentName==="service-near-me") {
+      navigate("/services")
+    } else if(intentName==="how-to-login") {
+      navigate("/login")
+    } else if(intentName==="how-to-signup") {
+      navigate("/signup")
+    }
 }
 
   const sendMessage = () => {
@@ -37,8 +43,10 @@ const intentResponse = {
           .then(res=>{
             console.log(res.data);
             setChatHistory(prev=>{
-              return [...prev, { type: 'bot', message: res.data.replyText }]
-          });
+              return [...prev, { type: 'bot', message: res.data.replyText }];
+              
+            });
+            intentResponse(res.data.intentName)
           })
           .catch(err=>{
             console.log(err);
