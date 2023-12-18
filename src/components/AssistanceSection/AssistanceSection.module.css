@@ -1,0 +1,174 @@
+.box{
+    width: 100%;
+    max-width: 100vw;
+    min-height: 400px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    max-width: 1240px;
+    display: flex;
+    justify-content: center;
+}
+
+.buildingFigure{
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    z-index: 0;
+    opacity: 0.5;
+    width: 30%;
+    max-width: 300px;
+    aspect-ratio: 1;
+}
+
+.dottedFigure{
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    z-index: 0;
+    width: 15%;
+    aspect-ratio: 1;
+    max-width: 300px;
+}
+
+.figure{
+    height: 450px;
+    /* height: 50%; */
+    aspect-ratio: 9/18;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* background-color: antiquewhite; */
+}
+
+.assistanceInfoContainer{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* background-color: hotpink; */
+}
+
+.heading{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.8rem;
+    text-wrap: wrap;
+    font-weight: 700;
+    color: whitesmoke;
+    line-height: 35px;
+}
+
+.subHeading{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    text-wrap: wrap;
+    font-weight: 500;
+    color: whitesmoke;
+    /* line-height: 35px; */
+}
+
+.contactInfoContainer{
+    display: flex;
+    gap: 35px;
+    /* background-color: chartreuse; */
+}
+
+.contactInfoBox{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.contactInfoData{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0px;
+    /* background-color: chocolate; */
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: whitesmoke;
+}
+
+
+@media (min-width:400px){
+    .heading{
+        font-size: 0.8rem;
+        line-height: 15px;
+    }
+    .contactInfoContainer{
+        gap: 10px;
+    }
+    
+    .subHeading{
+        font-size: 0.5rem;
+    }
+    .contactInfoData{
+        font-size: 0.5rem;
+    }
+}
+
+@media (min-width:600px){
+    .heading{
+        font-size: 1rem;
+        line-height: 20px;
+    }
+    
+    .subHeading{
+        font-size: 0.7rem;
+    }
+    .contactInfoData{
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 768px){
+    .heading{
+        font-size: 1.5rem;
+        line-height: 30px;
+    }
+    
+    .subHeading{
+        font-size: 0.8rem;
+    }
+    .contactInfoData{
+        font-size: 0.8rem;
+    }
+}
+
+
+@media (min-width:1240px){
+    .heading{
+        font-size: 2rem;
+        line-height: 35px;
+    }
+    
+    .subHeading{
+        font-size: 1.2rem;
+    }
+    .contactInfoData{
+        font-size: 1.1rem;
+    }
+}
+
+
+
+

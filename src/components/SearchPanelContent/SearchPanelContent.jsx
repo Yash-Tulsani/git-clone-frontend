@@ -6,7 +6,7 @@ import SearchRecommendation from '../SearchRecommendation/SearchRecommendation';
 
 const tagline="Empowering FPOs and Farmers for a Sustainable Harvest!"
 const searchBarPlaceholder="Search for FPOs, Products, Services, etc."
-const descipton="Empowering FPOs and Farmers for Sustainable Growth - Your Resourceful Agricultural Hub."
+const descripton="Empowering FPOs and Farmers for Sustainable Growth - Your Resourceful Agricultural Hub."
 
 
 // Temporary
@@ -48,9 +48,8 @@ const SearchPanelContent = () => {
   }
   const highlightedTextStyle = {
     color: theme.palette.text.primary,
-    fontSize: "22px",
   }
-  const desciptonStyle = {
+  const descriptonStyle = {
     color: theme.palette.text.secondary
   }
 
@@ -60,7 +59,8 @@ const SearchPanelContent = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.box}>
+      <div className={styles.container}>
         <div className={styles.tagline}  style={taglineStyle}>{tagline}</div>
         <div className={styles.searchBar} ref={ref}>
             <input type="text" placeholder={searchBarPlaceholder} value={search} onChange={handleInputChange}  className={styles.searchBarInput} />
@@ -73,9 +73,10 @@ const SearchPanelContent = () => {
           search.length>0 &&
             <SearchRecommendation targetRef={ref} searchResults={dummySearchResults}/>
         }
-        <div className={styles.descipton} style={desciptonStyle}>
-        Empowering <span style={highlightedTextStyle}>FPOs</span> and <span style={highlightedTextStyle}>Farmers</span> for <span style={highlightedTextStyle}>Sustainable Growth</span> - Your Resourceful Agricultural Hub.
+        <div className={styles.descripton} style={descriptonStyle}>
+          Empowering <span className={styles.highlightedText} style={highlightedTextStyle}>FPOs</span> and <span className={styles.highlightedText} style={highlightedTextStyle}>Farmers</span> for <span className={styles.highlightedText} style={highlightedTextStyle}>Sustainable Growth</span> - Your Resourceful Agricultural Hub.
         </div>
+      </div>
     </div>
   )
 }

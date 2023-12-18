@@ -1,11 +1,22 @@
+.box{
+    position: sticky;
+    top: 0;
+    left:0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px rgb(204, 204, 204);
+}
+
 .navbarContainer{
     width: 100%;
     height: 80px;
+    max-width: 1240px;
     display: flex;
     align-items: center;
     padding: 0 15px;
-    justify-content: space-between;
-    box-shadow: 0 0 15px rgb(204, 204, 204);
+    justify-content: space-between; 
 }
 
 .logoContainer{
@@ -20,7 +31,6 @@
     /* width: 35px;
     height: 35px; */
     overflow: hidden;
-    /* background-color: aqua; */
     object-fit: contain;
 }
 
@@ -38,7 +48,7 @@
     text-decoration: none;
     color:black;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
     transition: all;
     transition-duration: 100ms;
@@ -51,11 +61,29 @@
 .navbarButton{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.9rem;
 }
 
 .navbarButtonsContainer{
     display: flex;
     align-items: center;
-    gap:30px;
+    gap:20px;
+}
+
+.languageSelect{
+    z-index: 10;
+    font-size: 0.9rem;
+    width: fit-content !important;
+}
+
+@media (max-width: 1024px){
+    .navLinkText{
+        font-size: 0.75rem;
+    }
+    .navbarButton{
+        font-size: 0.75rem !important;
+    }
+    .languageSelect{
+        font-size: 0.75rem;
+    }
 }
