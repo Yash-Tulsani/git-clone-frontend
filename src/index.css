@@ -20,6 +20,14 @@ code {
     monospace;
 }
 
+.primaryTextFont {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.secondaryTextFont {
+  font-family: 'Montserrat', sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
