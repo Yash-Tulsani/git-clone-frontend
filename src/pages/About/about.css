@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
 
-* {
+.mainAboutDiv {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -8,7 +8,7 @@
 }
 
 
-.home {
+.home12 {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -16,26 +16,26 @@
     /* padding-top: 10rem; */
   }
   
-  .home .image {
+  .home12 .image12 {
     flex: 1 1 45rem;
   }
   
-  .home .image img {
+  .home12 .image12 img {
     width: 100%;
   }
   
-  .home .content {
+  .home12 .content {
     flex: 1 1 35rem;
   }
   
-  .home .content h3 {
+  .home12 .content h3 {
     font-size: 3rem;
     color: var(--black);
     line-height: 1.8;
     text-shadow: var(--text-shadow);
   }
   
-  .home .content p {
+  .home12 .content p {
     font-size: 1.7rem;
     color: var(--light-color);
     line-height: 1.8;

@@ -5,7 +5,7 @@ import Home from './pages/Home/Home';
 import Contact from './components/Contact/Contact';
 import Status from './components/Status/Status';
 import Services from './pages/Services/Services'
-import About from './components/About/about';
+import About from './pages/About/about';
 import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
