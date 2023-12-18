@@ -5,6 +5,10 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mantine/core": "^7.3.2",
+    "@mantine/form": "^7.3.2",
+    "@mantine/hooks": "^7.3.2",
+    "@mantine/notifications": "^7.3.2",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.14.20",
     "@syncfusion/ej2": "^19.4.48",
@@ -43,6 +47,7 @@
     "react-svg-loader": "^3.0.3",
     "swiper": "^11.0.5",
     "three": "^0.159.0",
+    "validator": "^13.11.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
