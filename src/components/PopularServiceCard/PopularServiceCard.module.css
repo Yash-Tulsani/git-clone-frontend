@@ -11,9 +11,141 @@
 .serviceButtonsContainer{
     width: 100%;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     padding: 0 15px;
     margin-bottom: 20px;
 }
 
+.locationContainer{
+    display: flex;
+    /* gap: 10px; */
+    align-items: center;
+}
 
+.location{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+}
+
+.locationIcon{
+    font-size: 1.2rem;
+}
+
+.serviceName{
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.wdcContainer,.availableAmountContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.priceContainer{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.description{
+    font-size: 0.9rem;
+}
+
+@media (min-width:400px){
+    .location{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 0.6rem;
+    }
+    
+    .locationIcon{
+        font-size: 0.8rem;
+    }
+    .serviceName{
+        font-size: 1rem;
+    }
+    .wdcContainer,.availableAmountContainer{
+        font-size: 0.5rem;
+    }
+    .priceContainer{
+        font-size: 0.6rem;
+    }
+    .description{
+        font-size: 0.55rem;
+    }
+}
+
+@media (min-width:600px){
+    .location{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 0.8rem;
+    }
+    
+    .locationIcon{
+        font-size: 1rem;
+    }
+    .serviceName{
+        font-size: 1.1rem;
+    }
+    .wdcContainer,.availableAmountContainer{
+        font-size: 0.6rem;
+    }
+    .priceContainer{
+        font-size: 0.7rem;
+    }
+    .description{
+        font-size: 0.65rem;
+    }
+}
+
+@media (min-width: 768px){
+    .location{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 0.8rem;
+    }
+    
+    .locationIcon{
+        font-size: 1.1rem;
+    }
+    .serviceName{
+        font-size: 1.2rem;
+    }
+    .wdcContainer,.availableAmountContainer{
+        font-size: 0.7rem;
+    }
+    .priceContainer{
+        font-size: 0.8rem;
+    }
+    .description{
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 1240px){
+    .location{
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 1.3rem;
+    }
+    
+    .locationIcon{
+        font-size: 1.5rem;
+    }
+    .serviceName{
+        font-size: 1.6rem;
+    }
+    .wdcContainer,.availableAmountContainer{
+        font-size: 1rem;
+    }
+    .priceContainer{
+        font-size: 1.2rem;
+    }
+    .description{
+        font-size: 1.1rem;
+    }
+}
