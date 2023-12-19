@@ -7,6 +7,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Box, Button, CardActionArea } from '@mui/material';
 import { useTheme } from '@mui/material';
 import styles from './PopularServiceCard.module.css'
+import { Link } from 'react-router-dom';
 
 export default function ActionAreaCard({service}) {
     const theme=useTheme()
@@ -75,9 +76,11 @@ export default function ActionAreaCard({service}) {
           </div>
         </CardContent>
         <Box className={styles.serviceButtonsContainer}>
-            <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
-                Buy
-            </Button>
+            <Link to={`/checkout/${service._id}`}>
+              <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
+                  Buy
+              </Button>
+            </Link>
             <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
                 Add to Cart
             </Button>
