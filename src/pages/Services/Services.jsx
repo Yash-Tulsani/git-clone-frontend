@@ -6,9 +6,11 @@ import theme from '../../theme';
 import L from 'leaflet';
 import axios from 'axios';
 
+const URL = process.env.REACT_APP_API_URL
+
 const Services = () => {
   const buyFunc = (id) => {
-    const data = axios.get(`http://localhost:5000/api/service/${id}`)
+    const data = axios.get(`${URL}/api/service/${id}`)
         .then((response) => {
           console.log(response.data)
         })
@@ -19,7 +21,7 @@ const Services = () => {
   const [services, setServices] = React.useState([]);
   React.useEffect(() => {
     const populateServices = () => {
-      const data = axios.get('http://localhost:5000/api/service/')
+      const data = axios.get(`${URL}/api/service/`)
         .then((response) => {
           console.log(response.data)
           for (let i = 0; i < response.data.services.length; i++) {
