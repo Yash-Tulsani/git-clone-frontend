@@ -105,8 +105,8 @@ const Navbar = () => {
         }
         
         <div className={styles.navbarButtonsContainer}>
-            <Link to = "/signup">
-                <Button variant="contained" size={loginButtonSize} style={buttonStyle} className={styles.loginButton}>
+            <Link to="/signin">
+                <Button variant="contained" style={buttonStyle}>
                     Login
                 </Button>
             </Link>

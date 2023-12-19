@@ -25,7 +25,7 @@ const intentResponse =(intentName)=> {
     if(intentName==="service-near-me") {
       navigate("/services")
     } else if(intentName==="how-to-login") {
-      navigate("/login")
+      navigate("/signin")
     } else if(intentName==="how-to-signup") {
       navigate("/signup") 
     } else if(intentName==="about-this-site") {
