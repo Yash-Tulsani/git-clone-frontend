@@ -24,7 +24,7 @@ const URL = process.env.REACT_APP_API_URL;
 const Services = () => {
   const buyFunc = (id) => {
     const data = axios
-      .get(`${URL}api/service/${id}`)
+      .get(`${URL}/api/service/${id}`)
       .then((response) => {
         console.log(response.data);
       })
@@ -37,7 +37,7 @@ const Services = () => {
   React.useEffect(() => {
     const populateServices = () => {
       const data = axios
-        .get(`${URL}api/service/`)
+        .get(`${URL}/api/service/`)
         .then((response) => {
           console.log(response.data);
           for (let i = 0; i < response.data.services.length; i++) {
