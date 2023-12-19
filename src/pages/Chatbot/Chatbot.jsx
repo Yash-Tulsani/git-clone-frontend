@@ -27,7 +27,9 @@ const intentResponse =(intentName)=> {
     } else if(intentName==="how-to-login") {
       navigate("/login")
     } else if(intentName==="how-to-signup") {
-      navigate("/signup")
+      navigate("/signup") 
+    } else if(intentName==="about-this-site") {
+      navigate("/about");
     }
 }
 
