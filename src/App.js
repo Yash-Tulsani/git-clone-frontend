@@ -13,6 +13,9 @@ import Checkout from './pages/Checkout/Checkout'
 import Fpo from "./pages/FPO/CreateForm"
 import About from './pages/About/about';
 import Dashboard from './pages/Dashboard/Dashboard';
+import SignIn from './components/SignIn/SignIn';
+import SignUp from './components/SignUp/SignUp';
+import Profile from './components/Profile/Profile';
 
 function App() {
 
@@ -75,6 +78,9 @@ function App() {
         <Route path="/services" element={<Services/>} />
         <Route path="/checkout/:id" element={<Checkout />} />
         <Route path="/fpo" element={<Fpo/>} />
+        <Route path="/signin" element={<SignIn/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/profile" element={<Profile/>} />        
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route  path="statistics" element={"Statistics"}/>
           <Route path="transactions" element={"Transactions"}/>
