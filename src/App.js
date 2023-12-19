@@ -1,10 +1,15 @@
+import logo from './logo.svg';
+import { useState, useEffect } from "react"
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Contact from './components/Contact/Contact';
-import Status from './components/Status/Status';
-import Services from './pages/Services/Services'
+import Contact from './pages/Contact/Contact';
+import Status from './pages/Status/Status';
+import Chatbot from './pages/Chatbot/Chatbot';
+import Services from './pages/Services/Services';
+import Checkout from './pages/Checkout/Checkout'
+
 import Fpo from "./pages/FPO/CreateForm"
 import About from './pages/About/about';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -13,15 +18,65 @@ import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
 
 function App() {
+
+  function successFunction(pos) {
+    var crd = pos.coords;
+  
+    console.log("Your current position is:");
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  }
+
+  function errorFunction(error) {
+    console.log(error);
+  }
+
+  const getLocation1 = () =>{
+    if (navigator.geolocation) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (result) {
+          if (result.state === "granted") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction);
+          } else if (result.state === "prompt") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction,errorFunction);
+          } else if (result.state === "denied") {
+            console.log("Prompt user to give permission"); 
+          }
+          result.onchange = function () {
+            console.log(result.state);
+          };
+        });
+    } else {
+      alert("Sorry Not available!");
+    }
+  }
+
+  useEffect(() => {
+
+    getLocation1()
+
+  }, [])
+
+
+  
+
+
   return (
     <Router>
       <Navbar />
       <Routes>
+        
+
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/status" element={<Status/>} />
         <Route path="/services" element={<Services/>} />
+        <Route path="/checkout/:id" element={<Checkout />} />
         <Route path="/fpo" element={<Fpo/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
@@ -40,6 +95,7 @@ function App() {
           <Route path="color-picker" element={"ColorPicker"}/>
         </Route>
       </Routes>
+      <Chatbot />
     </Router>
   );
 }
