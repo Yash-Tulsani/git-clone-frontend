@@ -16,53 +16,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
+import TestGraph from './components/TestGraph';
 
 function App() {
-
-  function successFunction(pos) {
-    var crd = pos.coords;
-  
-    console.log("Your current position is:");
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
-  }
-
-  function errorFunction(error) {
-    console.log(error);
-  }
-
-  const getLocation1 = () =>{
-    if (navigator.geolocation) {
-      navigator.permissions
-        .query({ name: "geolocation" })
-        .then(function (result) {
-          if (result.state === "granted") {
-            console.log(result.state);
-            navigator.geolocation.getCurrentPosition(successFunction);
-          } else if (result.state === "prompt") {
-            console.log(result.state);
-            navigator.geolocation.getCurrentPosition(successFunction,errorFunction);
-          } else if (result.state === "denied") {
-            console.log("Prompt user to give permission"); 
-          }
-          result.onchange = function () {
-            console.log(result.state);
-          };
-        });
-    } else {
-      alert("Sorry Not available!");
-    }
-  }
-
-  useEffect(() => {
-
-    getLocation1()
-
-  }, [])
-
-
-  
 
 
   return (
@@ -82,7 +38,7 @@ function App() {
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/profile" element={<Profile/>} />        
         <Route path="/dashboard" element={<Dashboard/>}>
-          <Route  path="statistics" element={"Statistics"}/>
+          <Route path="statistics" element={"Statistics"}/>
           <Route path="transactions" element={"Transactions"}/>
           <Route path="wdcs"  element={"WDCs"}/>
 
@@ -94,6 +50,7 @@ function App() {
           <Route path="calender" element={"Calendar"}/>
           <Route path="color-picker" element={"ColorPicker"}/>
         </Route>
+        <Route path="/testGraph" element={<TestGraph/>} />
       </Routes>
       <Chatbot />
     </Router>

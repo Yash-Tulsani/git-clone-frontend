@@ -4,7 +4,11 @@ import './s.css'
 export default function Slide(){
     var counter = 1;
     setInterval(function(){
-      document.getElementById('radio' + counter).checked = true;
+      console.log("Yo", counter);
+      if(document.getElementById('radio'+counter)) {
+        document.getElementById('radio' + counter).checked = true;
+      }
+      
       counter++;
       if(counter > 4){
         counter = 1;
