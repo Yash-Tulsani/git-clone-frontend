@@ -31,6 +31,7 @@ export default function ActionAreaCard({service}) {
         '&:hover': {
             backgroundColor: theme.palette.secondary.dark,
         },
+        width: "100%",
     }
     const wdcNameStyle={
       color: theme.palette.secondary.main,
@@ -76,14 +77,11 @@ export default function ActionAreaCard({service}) {
           </div>
         </CardContent>
         <Box className={styles.serviceButtonsContainer}>
-            <Link to={`/checkout/${service._id}`}>
+            <Link to={`/checkout/${service._id}`} style={{width:'100%'}}>
               <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
                   Buy
               </Button>
             </Link>
-            <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
-                Add to Cart
-            </Button>
         </Box>
       </CardActionArea>
     </Card>
