@@ -12,11 +12,11 @@ import Checkout from './pages/Checkout/Checkout'
 
 import Fpo from "./pages/FPO/CreateForm"
 import About from './pages/About/about';
-import Dashboard from './pages/Dashboard/Dashboard';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
 import TestGraph from './components/TestGraph';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
 
@@ -25,8 +25,6 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        
-
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
