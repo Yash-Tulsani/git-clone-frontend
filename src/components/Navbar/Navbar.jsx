@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import styles from './Navbar.module.css'
 import { useTheme } from '@mui/material'
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import Select from 'react-select';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
+import GoogleTranslate from '../GoogleTranslate/GoogleTranslate'
 
 const logos=[
     "Ministry_of_Rural_Development.png",
@@ -35,30 +36,19 @@ const navLinks=[
         name:"Status",
         link:"/status"
     },
+    {
+        name:"FPO",
+        link:"/fpo"
+    },
 ]
-
-const languageOptions=[
-    {value:"english",label:"English"}
-
-]
-
 
 const Navbar = () => {
     // State Variables
     const theme = useTheme();
     const matches768px=useMediaQuery('(max-width:768px)')
-    const [language, setLanguage] = React.useState('');
 
-    const [isSearchable, setIsSearchable] = useState(true);
-    const [isDisabled, setIsDisabled] = useState(false);
-
-    // Event Handlers
-    const handleLanguageChange = (event) => {
-        setLanguage(event.target.value);
-    };
 
     // Styles
-
     const buttonStyle={
         backgroundColor:theme.palette.secondary.main,
         color:theme.palette.primary.main,
@@ -99,15 +89,7 @@ const Navbar = () => {
             <Button variant="contained" style={buttonStyle}>
                 Login
             </Button>
-            <Select
-                className={styles.languageSelect}
-                classNamePrefix="select"
-                isDisabled={isDisabled}
-                isSearchable={isSearchable}
-                name="language"
-                options={languageOptions}
-                placeholder="Select Language"
-            />
+            <GoogleTranslate/>
         </div>
         {
             matches768px &&

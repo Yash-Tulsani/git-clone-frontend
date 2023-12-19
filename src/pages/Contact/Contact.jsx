@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./contact.css";
+import L from 'leaflet';
 import {
   getFocus,
   getBlur,
@@ -10,12 +11,27 @@ import {
   getFocus3,
   getBlur3,
 } from "./sideEffect_contact.js";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 export default function Contact() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [message, setMessage] = useState("");
+  // Default marker icon
+  const defaultMarkerIcon = new L.Icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/marker-icon.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
   return (
     <>
       <div className="container-contact">
@@ -24,56 +40,33 @@ export default function Contact() {
         <span className="c-skew"></span>
         <div className="form-contact">
           <div className="contact-info-contact">
-            <h2 className="h2-contact">Contact Information</h2>
-            <p id="info-text-contact">
-              We would love to respond to your queries and help you succeed.Feel
-              free to get in touch with us.
-              <br />
-              &nbsp;
-            </p>
-
-            <div className="info-contact">
-              <p className="p-info-contact">
-                <span className="logo-contact">
-                  <img src={process.env.PUBLIC_URL + "/images/home.png"} alt='sorry'/>
-                </span>
-                <span className="text-contact">IIIT Sricity,Chittoor</span>
-              </p>
-              <p className="p-info-contact">
-                <span className="logo-contact">
-                  <img src={process.env.PUBLIC_URL + "/images/phone.png"} alt='sorry'/>
-                </span>
-                <span className="text-contact">9534579833</span>
-              </p>
-              <p className="p-info-contact">
-                <span className="logo-contact">
-                  <img src={process.env.PUBLIC_URL + "/images/mail.jfif"} alt='sorry'/>
-                </span>
-                <span className="text-contact">help@smail.com</span>
-              </p>
+          <h2 className="h2-contact">Contact Information</h2>
+        
+          <div className="map-container">
+        {/* Leaflet Map */}
+        <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: '400px', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[51.505, -0.09]} icon={defaultMarkerIcon}>
+            <Popup>Your Location</Popup>
+          </Marker>
+        </MapContainer>
+        <div className="link-contact">
+              <a href="https://www.facebook.com/" style={{margin: '10px'}}>
+                <FacebookIcon/>
+              </a>
+              <a href="https://www.instagram.com/" style={{margin: '10px'}}>
+                <InstagramIcon/>
+              </a>
+              <a href="https://www.whatsapp.com/" style={{margin: '10px'}}>
+                <WhatsAppIcon/>
+              </a>
+              <a href="https://twitter.com/?lang=en" style={{margin: '10px'}}>
+                <TwitterIcon/>
+              </a>
             </div>
-            <h2 className="h2-contact">Join us at</h2>
-            <div className="link-contact">
-              <a href="https://www.facebook.com/">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/f-b.jpg"}
-                  id="fb-contact"
-                  alt='sorry'
-                />
-              </a>
-              <a href="https://www.instagram.com/">
-                <img
-                  src={process.env.PUBLIC_URL + "/images/ig.png"}
-                  id="ig-contact"
-                  alt='sorry'
-                />
-              </a>
-              <a href="https://www.whatsapp.com/">
-                <img src={process.env.PUBLIC_URL + "/images/w-b.jfif"} alt='sorry'/>
-              </a>
-              <a href="https://twitter.com/?lang=en">
-                <img src={process.env.PUBLIC_URL + "/images/twitter.png"} alt='sorry'/>
-              </a>
             </div>
             <span className="circle-1"></span>
             <span className="circle-2"></span>

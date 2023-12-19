@@ -9,6 +9,8 @@ import Status from './pages/Status/Status';
 import Chatbot from './pages/Chatbot/Chatbot';
 import Services from './pages/Services/Services';
 import Checkout from './pages/Checkout/Checkout'
+
+import Fpo from "./pages/FPO/CreateForm"
 import About from './pages/About/about';
 import Dashboard from './pages/Dashboard/Dashboard';
 
@@ -72,6 +74,7 @@ function App() {
         <Route path="/status" element={<Status/>} />
         <Route path="/services" element={<Services/>} />
         <Route path="/checkout/:id" element={<Checkout />} />
+        <Route path="/fpo" element={<Fpo/>} />
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route  path="statistics" element={"Statistics"}/>
           <Route path="transactions" element={"Transactions"}/>

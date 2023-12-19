@@ -1,0 +1,16 @@
+.languageSelect{
+    z-index: 10;
+    font-size: 0.9rem;
+    width: fit-content !important;
+}
+
+.googleTranslate{
+    width: 140px !important;
+    height: 80% !important;
+}
+
+@media (max-width: 1024px){
+    .languageSelect{
+        font-size: 0.75rem;
+    }
+}
