@@ -45,7 +45,9 @@ const navLinks=[
 const Navbar = () => {
     // State Variables
     const theme = useTheme();
-    const matches768px=useMediaQuery('(max-width:768px)')
+    const matched768px=useMediaQuery('(max-width:768px)')
+    const matched600px=useMediaQuery('(max-width:600px)');
+    const matched1024px=useMediaQuery('(max-width:1024px)');
 
 
     // Styles
@@ -57,6 +59,23 @@ const Navbar = () => {
             fontSize: "0.75rem",
         }
     }
+
+    let loginButtonSize="medium";
+
+    if(matched1024px){
+        buttonStyle.fontSize="0.8rem";
+        loginButtonSize="small";
+    }
+    if(matched768px){
+        buttonStyle.fontSize="0.75rem";
+        loginButtonSize="small";
+    }
+    if(matched600px){
+        buttonStyle.fontSize="0.6rem";
+        loginButtonSize="small";
+    }
+
+
 
   return (
     <div style={{backgroundColor:theme.palette.primary.main}} className={styles.box}>
@@ -71,7 +90,7 @@ const Navbar = () => {
             }
         </div>
         {
-            !matches768px &&
+            !matched768px &&
             <div className={styles.navbarLinks}>
                 {
                     navLinks.map((navLink,index)=>(
@@ -87,14 +106,14 @@ const Navbar = () => {
         
         <div className={styles.navbarButtonsContainer}>
             <Link to = "/signup">
-                <Button variant="contained" style={buttonStyle}>
+                <Button variant="contained" size={loginButtonSize} style={buttonStyle} className={styles.loginButton}>
                     Login
                 </Button>
             </Link>
             <GoogleTranslate/>
         </div>
         {
-            matches768px &&
+            matched768px &&
             <HamburgerMenu/>
         }
         </div>

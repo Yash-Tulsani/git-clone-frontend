@@ -76,6 +76,7 @@
     width: fit-content !important;
 }
 
+
 @media (max-width: 1024px){
     .navLinkText{
         font-size: 0.75rem;
@@ -85,5 +86,11 @@
     }
     .languageSelect{
         font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px){
+    .loginButton{
+
     }
 }
