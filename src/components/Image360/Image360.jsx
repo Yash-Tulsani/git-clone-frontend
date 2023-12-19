@@ -18,7 +18,7 @@ const Image360 = () => {
     <section className='vr-hero'>
         <div className='vr-text'>
           <div class='section'>
-            <h1 class='revealUp' data-aos="fade-up">Experience Virtual Reality</h1>
+            <h1 class='revealUp' data-aos="fade-up">Explore best farmer services</h1>
           </div>
         </div>
         <div className='vr-iframe'>
