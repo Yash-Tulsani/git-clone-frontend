@@ -33,8 +33,8 @@ const navLinks=[
         link:"/contact"
     },
     {
-        name:"Status",
-        link:"/status"
+        name:"FAQ",
+        link:"/faq"
     },
     {
         name:"FPO",

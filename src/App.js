@@ -5,10 +5,10 @@ import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Contact from './pages/Contact/Contact';
-import Status from './pages/Status/Status';
 import Chatbot from './pages/Chatbot/Chatbot';
 import Services from './pages/Services/Services';
 import Checkout from './pages/Checkout/Checkout'
+import FAQ from './pages/FAQ/FAQ';
 
 import Fpo from "./pages/FPO/CreateForm"
 import About from './pages/About/about';
@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
-        <Route path="/status" element={<Status/>} />
+        <Route path="/faq" element={<FAQ/>} />
         <Route path="/services" element={<Services/>} />
         <Route path="/checkout/:id" element={<Checkout />} />
         <Route path="/fpo" element={<Fpo/>} />
