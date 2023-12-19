@@ -3,7 +3,6 @@ import styles from './Navbar.module.css'
 import { useTheme } from '@mui/material'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import Select from 'react-select';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import GoogleTranslate from '../GoogleTranslate/GoogleTranslate'
@@ -105,11 +104,14 @@ const Navbar = () => {
         }
         
         <div className={styles.navbarButtonsContainer}>
-            <Link to="/signin">
-                <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
-                    Login
-                </Button>
-            </Link>
+            {
+                !matched768px &&
+                <Link to="/signin">
+                    <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
+                        Login
+                    </Button>
+                </Link>
+            }
             <GoogleTranslate/>
         </div>
         {

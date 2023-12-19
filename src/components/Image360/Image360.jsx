@@ -3,6 +3,8 @@ import "./Image360.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+const headerText= 'Explore best farmer services'
+
 const Image360 = () => {
     useEffect(() => {
         // Initialize AOS
@@ -18,7 +20,7 @@ const Image360 = () => {
     <section className='vr-hero'>
         <div className='vr-text'>
           <div class='section'>
-            <h1 class='revealUp' data-aos="fade-up">Explore best farmer services</h1>
+            <h1 class='revealUp' data-aos="fade-up">{headerText}</h1>
           </div>
         </div>
         <div className='vr-iframe'>
