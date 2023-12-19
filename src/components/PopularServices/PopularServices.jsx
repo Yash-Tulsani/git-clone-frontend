@@ -73,7 +73,7 @@ const PopularServices = () => {
 
     // Sideeffects
     useEffect(()=>{
-        const url=`${process.env.REACT_APP_API_URL}api/service/get-all-services/${servicesLimit}`;
+        const url=`${process.env.REACT_APP_API_URL}/api/service/get-all-services/${servicesLimit}`;
         const fetchServices=async()=>{
             const response=await fetch(url);
             const data=await response.json();
