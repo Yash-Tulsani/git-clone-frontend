@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import AddServiceForm from '../../components/DashboardComponents/AddServiceForm/AddServiceForm';
 import WDCAdmin from '../../components/DashboardComponents/WDCAdmin/WDCAdmin';
 import ChartsComponent from '../../components/DashboardComponents/ChartsComponent/ChartsComponent';
+import UserAdmin from '../../components/DashboardComponents/UserAdmin/UserAdmin';
 
 const Dashboard = () => {
 
@@ -28,6 +29,9 @@ const Dashboard = () => {
           }
           {
             tab==3 && <ChartsComponent />
+          }
+          {
+            tab==4 && <UserAdmin />
           }
         </div>
         

@@ -1,8 +1,11 @@
 import React, {useState} from 'react'
 
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 import axios from "axios";
+
 
 export const WdcCreationForm = () => {
 
@@ -26,6 +29,8 @@ export const WdcCreationForm = () => {
         'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Lakshadweep', 'Puducherry'
       ];
 
+      const navigate = useNavigate();
+
     const onSubmitForm = (event)=>{
         event.preventDefault();
 
@@ -36,7 +41,13 @@ export const WdcCreationForm = () => {
         })
             .then(res=>{
                 console.log(res.data);
-                setformResponse(res.data)
+                toast("WDC Created! Redirecting you to WDC Listing Page")
+                setTimeout(() => {
+                    
+                    navigate("/wdcs")
+                }, 4000);
+                
+                // setformResponse(res.data)
                 
             })
             .catch(err=>{
@@ -100,9 +111,10 @@ export const WdcCreationForm = () => {
                     </div>
                 </div> */}
                 <Button type='submit'>Submit Here</Button>
+                
             </Form>)}
             
-            
+            <ToastContainer style={{ zIndex: 12}} />
      
         </div>
     )

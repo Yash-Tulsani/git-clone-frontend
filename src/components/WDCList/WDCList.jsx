@@ -186,7 +186,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Nutrition
+          Transaction History
         </Typography>
       )}
 
@@ -211,7 +211,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function WDCList() {
+export default function WDCList(props) {
   const [rows, setRows] = React.useState([]);
   React.useEffect(() => {
     const populateServices = () => {
