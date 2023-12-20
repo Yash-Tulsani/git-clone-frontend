@@ -17,7 +17,16 @@ import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
 
+import Web3 from 'web3';
+
 function App() {
+
+  const providerURL = process.env.PROVIDER_URL;
+
+  useEffect(() => {
+    const web3 = new Web3(providerURL);
+    console.log(web3);
+  }, [])
 
   function successFunction(pos) {
     var crd = pos.coords;
