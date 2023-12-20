@@ -2,7 +2,9 @@ import React from 'react'
 
 const AvailableWDCs = () => {
   return (
-    <div>AvailableWDCs</div>
+    <section className={StyleSheet.container}>
+      
+    </section>
   )
 }
 
