@@ -11,64 +11,64 @@ import {toast} from 'react-toastify';
 import { useSelector } from 'react-redux';
 
 
-export default function JoinWDCModal() {
-  const [open, setOpen] = React.useState(true);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+export default function JoinWDCModal({open,setOpen,wdc,handleOpen,handleClose}) {
+  
   const theme = useTheme();
   const [amountRequired, setAmountRequired] = React.useState(0);
   const [stake, setStake] = React.useState(1);
   const {currentUser} = useSelector(state => state.user);
 
+  const maxStake = 100-wdc.percentageOccupied;
+
   console.log(currentUser, "current user")
 
   // Temporary
-  const wdc = {
-    "_id": "658126e069204a849242b83d",
-    "FPO_id": {
-      "$oid": "658125d0d2fe0d45ce703921"
-    },
-    "FPO_name": "Tambarm FPO",
-    "name": "Wasteshed Royapettah",
-    "address": "Sample FPO Address",
-    "district": "Royapettah",
-    "state": "Tamil Nadu",
-    "dateRegistered": {
-      "$date": {
-        "$numberLong": "1702962912201"
-      }
-    },
-    "status": "Pending Approval",
-    "coordinates": [],
-    "__v": {
-      "$numberInt": "0"
-    },
-    "percentageOccupied": {
-      "$numberInt": 3
-    },
-    "head_id": {
-      "$oid": "657ddf2c34e46d4e31bfbe18"
-    },
-    "head_name": "Uma",
-    "description": "Sample FPO description",
-    "images": [
-      "https://i0.wp.com/www.jeevantirth.org/wp-content/uploads/2020/12/JT-Icons-FPO.jpg"
-    ],
-    "members": [
-      {
-        "$oid": "657ddf2c34e46d4e31bfbe14"
-      },
-      {
-        "$oid": "65806bea79bad2b8ee03c8c9"
-      }
-    ],
-    "services": [],
-    "phoneNumber": {
-      "$numberDouble": "6625552707.0"
-    },
-    "email": "fpo1@example.com",
-    "publicInvestment": 500000
-  };
+  // const wdc = {
+  //   "_id": "658126e069204a849242b83d",
+  //   "FPO_id": {
+  //     "$oid": "658125d0d2fe0d45ce703921"
+  //   },
+  //   "FPO_name": "Tambarm FPO",
+  //   "name": "Wasteshed Royapettah",
+  //   "address": "Sample FPO Address",
+  //   "district": "Royapettah",
+  //   "state": "Tamil Nadu",
+  //   "dateRegistered": {
+  //     "$date": {
+  //       "$numberLong": "1702962912201"
+  //     }
+  //   },
+  //   "status": "Pending Approval",
+  //   "coordinates": [],
+  //   "__v": {
+  //     "$numberInt": "0"
+  //   },
+  //   "percentageOccupied": {
+  //     "$numberInt": 3
+  //   },
+  //   "head_id": {
+  //     "$oid": "657ddf2c34e46d4e31bfbe18"
+  //   },
+  //   "head_name": "Uma",
+  //   "description": "Sample FPO description",
+  //   "images": [
+  //     "https://i0.wp.com/www.jeevantirth.org/wp-content/uploads/2020/12/JT-Icons-FPO.jpg"
+  //   ],
+  //   "members": [
+  //     {
+  //       "$oid": "657ddf2c34e46d4e31bfbe14"
+  //     },
+  //     {
+  //       "$oid": "65806bea79bad2b8ee03c8c9"
+  //     }
+  //   ],
+  //   "services": [],
+  //   "phoneNumber": {
+  //     "$numberDouble": "6625552707.0"
+  //   },
+  //   "email": "fpo1@example.com",
+  //   "publicInvestment": 500000
+  // };
 
 
   
@@ -121,7 +121,7 @@ export default function JoinWDCModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      {/* <Button onClick={handleOpen}>Open modal</Button> */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -168,7 +168,7 @@ export default function JoinWDCModal() {
                   aria-label="Default"
                   valueLabelDisplay="auto"
                   min={1}
-                  max={`100`}
+                  max={maxStake}
                   style={{width:'100%'}}
                   color="secondary"
                   onChange={handleStakeChange}
