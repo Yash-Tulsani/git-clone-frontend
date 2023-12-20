@@ -21,7 +21,61 @@ import TextToSpeech from './components/TestTextToSpeech';
 import AvailableWDCs from './pages/AvailableWDCs/AvailableWDCs';
 import { ToastContainer, toast } from 'react-toastify';
 
+import Web3 from 'web3';
+
 function App() {
+
+  const providerURL = process.env.PROVIDER_URL;
+
+  useEffect(() => {
+    const web3 = new Web3(providerURL);
+    console.log(web3);
+  }, [])
+
+  function successFunction(pos) {
+    var crd = pos.coords;
+  
+    console.log("Your current position is:");
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  }
+
+  function errorFunction(error) {
+    console.log(error);
+  }
+
+  const getLocation1 = () =>{
+    if (navigator.geolocation) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (result) {
+          if (result.state === "granted") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction);
+          } else if (result.state === "prompt") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction,errorFunction);
+          } else if (result.state === "denied") {
+            console.log("Prompt user to give permission"); 
+          }
+          result.onchange = function () {
+            console.log(result.state);
+          };
+        });
+    } else {
+      alert("Sorry Not available!");
+    }
+  }
+
+  useEffect(() => {
+
+    getLocation1()
+
+  }, [])
+
+
+  
 
 
   return (
