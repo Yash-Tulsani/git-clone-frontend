@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 import { Button, Form, FloatingLabel } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 
+import { ToastContainer, toast } from 'react-toastify';
+
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 const AddServiceForm = () => {
 
     const { currentUser } = useSelector(state => state.user)
     console.log(currentUser, "Here is the user");
+
+    const navigate = useNavigate();
  
     const [serviceName, setserviceName] = useState("")
     const [serviceCategory, setserviceCategory] = useState("")
@@ -35,7 +41,11 @@ const AddServiceForm = () => {
         })
             .then(res=>{
                 console.log(res.data);
-                setformResponse(res.data)
+                toast("Service Creation Succesfull");
+                setTimeout(() => {
+                    navigate(`/checkout/${res.data._id}`)
+                }, 3000);
+                // setformResponse(res.data);
                 
             })
             .catch(err=>{
@@ -71,7 +81,7 @@ const AddServiceForm = () => {
                 </Form>)
             }
             
-
+            <ToastContainer style={{ zIndex: 12}} />
         </div>
   )
 }
