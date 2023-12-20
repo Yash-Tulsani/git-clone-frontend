@@ -1,27 +1,53 @@
-import React, {useState,useEffect} from 'react'
-import JoinWDCModal from '../../components/JoinWDCModal/JoinWDCModal'
+import React,{useState,useEffect} from 'react'
 import styles from './AvailableWDCs.module.css'
+import { useTheme } from '@mui/material'
+import AvailableWDCsCard from '../../components/AvailableWDCsCard/AvaliableWDCsCard'
 
 const AvailableWDCs = () => {
-  // States
-  const [wdcs,setWDCs]=useState([])
+    // State variables
+    const theme = useTheme()
+    const [wdcs, setWdcs] = useState([])
+      // Local Variables
 
-  // Effects
-  useEffect(()=>{
-    async function fetchData(){
-      console.log('Fetching data from API....')
-      const response=await fetch(`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`)
-      const data=await response.json()
-      console.log(data)
-      setWDCs(data)
+    // Styles
+    const headerSubTitleStyle = {
+        color: theme.palette.secondary.main,
     }
-    fetchData()
-  },[])
+    const headerTitleStyle = {
+        color: theme.palette.text.primary,
+    }
+
+    // Sideeffects
+    useEffect(()=>{
+        const url=`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`;
+        const fetchServices=async()=>{
+            try{
+                const response=await fetch(url);
+                const data=await response.json();
+                console.log('Popular Services: ',data);
+                setWdcs(data);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+        fetchServices();
+    },[])
+
   return (
-    <section className={styles.container}>
-        <JoinWDCModal/>
-        <h1>Testing...</h1>
-    </section>
+    <div className={styles.container}>
+        <div className={styles.header}>
+        <div className={styles.backgroundText}>Agricultural</div>
+            <div className={styles.headerTitle} style={headerTitleStyle}>WDC</div>
+        </div>
+        <div className={styles.dataContainer}>
+            {
+                wdcs.map((wdc, index) => {
+                    return <AvailableWDCsCard key={index} index={index} wdc={wdc} />
+                })
+            }
+        </div>
+    </div>
   )
 }
 
