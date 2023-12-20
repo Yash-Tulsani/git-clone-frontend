@@ -25,6 +25,7 @@ const CreateForm = () => {
 
   const [emailError, setEmailError] = useState(false);
   const [formError, setFormError] = useState(false);
+  
 
   // Event handler to set the focused field
   const handleFocus = (fieldName) => {
