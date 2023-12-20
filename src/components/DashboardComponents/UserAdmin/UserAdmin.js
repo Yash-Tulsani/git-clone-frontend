@@ -96,10 +96,10 @@ const UserAdmin = () => {
     <div className='p-6'>
         {
             userData ? (<div>
-                <div className='mb-3'>
+                {/* <div className='mb-3'>
                     <Button onClick={(event)=>setdisplayTab("Investment")}>Investments</Button>
                     <Button onClick={(event)=>setdisplayTab("Transactions History")}>Transactions History</Button>
-                </div>
+                </div> */}
 
                 {
                     displayTab=="Investment" && (<div>

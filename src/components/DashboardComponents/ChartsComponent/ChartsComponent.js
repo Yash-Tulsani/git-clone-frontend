@@ -101,12 +101,12 @@ const ChartsComponent = () => {
                     
             </div>
             
-            <ButtonGroup variant="contained" aria-label="outlined primary button group">
+            {/* <ButtonGroup variant="contained" aria-label="outlined primary button group">
                 <Button onClick={(event) => setshowFPO(0)} >Tambaram Farmer Producer Organization</Button>
                 <Button onClick={(event) => setshowFPO(1)} >Wasteshed Royapettah</Button>
                 <Button onClick={(event) => setshowFPO(2)} >Wasteshed Saidapet</Button>
 
-            </ButtonGroup>
+            </ButtonGroup> */}
 
 
                 
