@@ -3,6 +3,8 @@ import styles from './AvailableWDCs.module.css'
 import { useTheme } from '@mui/material'
 import AvailableWDCsCard from '../../components/AvailableWDCsCard/AvaliableWDCsCard'
 import JoinWDCModal from '../../components/JoinWDCModal/JoinWDCModal'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
 
 const AvailableWDCs = () => {
     // State variables
@@ -12,6 +14,7 @@ const AvailableWDCs = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [currentWDC, setCurrentWDC] = useState({})
+    const {currentUser} = useSelector(state => state.user);
 
       // Local Variables
 
@@ -40,22 +43,26 @@ const AvailableWDCs = () => {
         fetchServices();
     },[])
 
-  return (
-    <div className={styles.container}>
-        <div className={styles.header}>
-        <div className={styles.backgroundText}>Agricultural</div>
-            <div className={styles.headerTitle} style={headerTitleStyle}>WDCs</div>
-        </div>
-        <div className={styles.dataContainer}>
-            {
-                wdcs.map((wdc, index) => {
-                    return <AvailableWDCsCard open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} key={index} index={index} wdc={wdc} setCurrentWDC={setCurrentWDC}/>
-                })
-            }
-        </div>
-        <JoinWDCModal open={open} setOpen={setOpen} wdc={currentWDC} handleOpen={handleOpen} handleClose={handleClose} />
-    </div>
-  )
+  
+  {
+
+    return currentUser?(
+        <div className={styles.container}>
+            <div className={styles.header}>
+            <div className={styles.backgroundText}>Agricultural</div>
+                <div className={styles.headerTitle} style={headerTitleStyle}>WDCs</div>
+            </div>
+            <div className={styles.dataContainer}>
+                {
+                    wdcs.map((wdc, index) => {
+                        return <AvailableWDCsCard open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} key={index} index={index} wdc={wdc} setCurrentWDC={setCurrentWDC}/>
+                    })
+                }
+            </div>
+            <JoinWDCModal open={open} setOpen={setOpen} wdc={currentWDC} handleOpen={handleOpen} handleClose={handleClose} />
+        </div>):
+    <Navigate to="/signin" />
+  }
 }
 
 export default AvailableWDCs

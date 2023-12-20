@@ -18,7 +18,7 @@ export default function JoinWDCModal({open,setOpen,wdc,handleOpen,handleClose}) 
   const [stake, setStake] = React.useState(1);
   const {currentUser} = useSelector(state => state.user);
 
-  const maxStake = 100-wdc.percentageOccupied;
+  const maxStake = 100-parseInt(wdc.percentageOccupied);
 
   console.log(currentUser, "current user")
 
