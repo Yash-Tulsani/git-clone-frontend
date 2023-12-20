@@ -6,10 +6,13 @@ import Typography from '@mui/material/Typography';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Box, Button, CardActionArea } from '@mui/material';
 import { useTheme } from '@mui/material';
-import styles from './PopularServiceCard.module.css'
+import styles from './AvailableWDCsCard.module.css'
 import { Link } from 'react-router-dom';
+const jsonList = require('../../components/data.json');
 
-export default function ActionAreaCard({wdc}) {
+export default function AvailableWDCsCard({wdc}) {
+  console.log(jsonList)
+    const myArray = [0,1,2,3,4]
     const theme=useTheme()
 
     // Styles
@@ -56,32 +59,26 @@ export default function ActionAreaCard({wdc}) {
           <Typography sx={serviceHeadingStyle} className={styles.serviceName} gutterBottom variant="h5" component="div" color="text.primary">
             {wdc.name}
           </Typography>
-          <div className={styles.wdcContainer}>
-            <span className={styles.wdcStatusHead}>Associated WDC:</span>
-            <span className={styles.wdcStatus} style={wdcStatusStyle}>{service.WDC_id.name}</span>
-          </div>
           <div className={styles.availableAmountContainer}>
-            <span className={styles.availableAmountHead}>Quantitiy Left: </span>
-            <span className={styles.availableAmount} style={availableAmountStyle}>{service.quantityLeft}</span>
+            <span className={styles.availableAmountHead}>Percentage Occupied: </span>
+            <span className={styles.availableAmount} style={availableAmountStyle}>{wdc.percentageOccupied}</span>
           </div>
           <div className={styles.locationContainer}>
             <LocationOnIcon className={styles.locationIcon}/>
-            <span className={styles.location}>{service.district}, {service.state}</span>
+            <span className={styles.location}>{wdc.district}, {wdc.state}</span>
           </div>
           <Typography variant="body2" color="text.secondary" className={styles.description}>
-            {service.description}
+            {jsonList.description[Math.floor(Math.random() * myArray.length)]}
           </Typography>
-          <div className={styles.priceContainer}>
-            <span className={styles.priceHead}>Price per Unit: </span>
-            <span className={styles.price}>₹{service.price/100}</span>
-          </div>
+        
         </CardContent>
         <Box className={styles.serviceButtonsContainer}>
-            <Link to={`/checkout/${service._id}`} style={{width:'100%'}}>
               <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
                   Buy
               </Button>
-            </Link>
+              <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
+                  Know More
+              </Button>
         </Box>
       </CardActionArea>
     </Card>

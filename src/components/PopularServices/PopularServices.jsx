@@ -75,10 +75,15 @@ const PopularServices = () => {
     useEffect(()=>{
         const url=`${process.env.REACT_APP_API_URL}/api/service/get-all-services/${servicesLimit}`;
         const fetchServices=async()=>{
-            const response=await fetch(url);
-            const data=await response.json();
-            console.log('Popular Services: ',data);
-            setServices(data);
+            try{
+                const response=await fetch(url);
+                const data=await response.json();
+                console.log('Popular Services: ',data);
+                setServices(data);
+            }
+            catch(e){
+                console.log(e);
+            }
         }
         fetchServices();
     },[])
@@ -93,7 +98,7 @@ const PopularServices = () => {
         <div className={styles.dataContainer}>
             {
                 services.map((service, index) => {
-                    return <PopularServiceCard key={index} service={service} />
+                    return <PopularServiceCard key={index} index={index} service={service} />
                 })
             }
         </div>
