@@ -17,6 +17,7 @@ import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
 import TestGraph from './components/TestGraph';
 import Dashboard from './pages/Dashboard/Dashboard';
+import TextToSpeech from './components/TestTextToSpeech';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
           <Route path="color-picker" element={"ColorPicker"}/>
         </Route>
         <Route path="/testGraph" element={<TestGraph/>} />
+        <Route path="/testTextToSpeech" element={<TextToSpeech text={"This is the temporary text"}/>}  />
       </Routes>
       <Chatbot />
     </Router>

@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -13,6 +13,50 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { accordians } from "./accordianData";
 
 const FAQ = () => {
+
+  const [isPaused, setIsPaused] = useState(false);
+  const [utterance, setUtterance] = useState(null);
+  const text = "How to use this website? First of all welcome to our site. If you are user you can look at our 'Services' Page to avail more services. You should create an account and can browser through our services. You can also join an FPO and offer services to other users to make an income. Who is a FPO? Farmer Producer Organization are a group of farmers. They collectively purchase and sell so as to save costs."
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    const u = new SpeechSynthesisUtterance(text);
+
+    setUtterance(u);
+
+    return () => {
+      synth.cancel();
+    };
+  }, [text]);
+
+  const handlePlay = () => {
+    const synth = window.speechSynthesis;
+
+    if (isPaused) {
+      synth.resume();
+    }
+
+    synth.speak(utterance);
+
+    setIsPaused(false);
+  };
+
+  const handlePause = () => {
+    const synth = window.speechSynthesis;
+
+    synth.pause();
+
+    setIsPaused(true);
+  };
+
+  const handleStop = () => {
+    const synth = window.speechSynthesis;
+
+    synth.cancel();
+
+    setIsPaused(false);
+  };
+
   const theme = useTheme();
 
   const isMobile = useMediaQuery(theme.breakpoints.down(800));
@@ -150,6 +194,7 @@ const FAQ = () => {
         ) : (
           <Typography variant="h4">FAQ&apos;s</Typography>
         )}
+        <Button onClick={handlePlay} variant="contained">Text-t-speech</Button>
         <Box sx={innerBox}>
           <Box sx={leftSide}>
             <Box sx={accordionContainer}>
@@ -185,7 +230,8 @@ const FAQ = () => {
               <Typography sx={buttonTypo}>VIEW MORE</Typography>
             </Button>
           </Box>
-          </Box>
+        </Box>
+        
       </Box>
     </>
   );
