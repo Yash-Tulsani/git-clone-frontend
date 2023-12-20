@@ -19,6 +19,7 @@ import TestGraph from './components/TestGraph';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TextToSpeech from './components/TestTextToSpeech';
 import AvailableWDCs from './pages/AvailableWDCs/AvailableWDCs';
+import { ToastContainer, toast } from 'react-toastify';
 
 import Web3 from 'web3';
 
@@ -80,6 +81,20 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
+        {/* Same as */}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />

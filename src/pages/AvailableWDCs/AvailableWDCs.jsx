@@ -2,11 +2,17 @@ import React,{useState,useEffect} from 'react'
 import styles from './AvailableWDCs.module.css'
 import { useTheme } from '@mui/material'
 import AvailableWDCsCard from '../../components/AvailableWDCsCard/AvaliableWDCsCard'
+import JoinWDCModal from '../../components/JoinWDCModal/JoinWDCModal'
 
 const AvailableWDCs = () => {
     // State variables
     const theme = useTheme()
     const [wdcs, setWdcs] = useState([])
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [currentWDC, setCurrentWDC] = useState({})
+
       // Local Variables
 
     // Styles
@@ -19,7 +25,7 @@ const AvailableWDCs = () => {
 
     // Sideeffects
     useEffect(()=>{
-        const url=`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`;
+        const url=`http://localhost:5000/api/wdc/get-all-wdcs-with-populate`;
         const fetchServices=async()=>{
             try{
                 const response=await fetch(url);
@@ -38,15 +44,16 @@ const AvailableWDCs = () => {
     <div className={styles.container}>
         <div className={styles.header}>
         <div className={styles.backgroundText}>Agricultural</div>
-            <div className={styles.headerTitle} style={headerTitleStyle}>WDC</div>
+            <div className={styles.headerTitle} style={headerTitleStyle}>WDCs</div>
         </div>
         <div className={styles.dataContainer}>
             {
                 wdcs.map((wdc, index) => {
-                    return <AvailableWDCsCard key={index} index={index} wdc={wdc} />
+                    return <AvailableWDCsCard open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} key={index} index={index} wdc={wdc} setCurrentWDC={setCurrentWDC}/>
                 })
             }
         </div>
+        <JoinWDCModal open={open} setOpen={setOpen} wdc={currentWDC} handleOpen={handleOpen} handleClose={handleClose} />
     </div>
   )
 }
