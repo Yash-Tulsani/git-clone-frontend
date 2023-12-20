@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styles from './PopularServices.module.css'
 import { useTheme } from '@mui/material'
 import PopularServiceCard from '../PopularServiceCard/PopularServiceCard'
@@ -58,6 +58,10 @@ const popularServices=[
 const PopularServices = () => {
     // State variables
     const theme = useTheme()
+    const [services,setServices]=useState([]);
+
+      // Local Variables
+  const servicesLimit=9;
 
     // Styles
     const headerSubTitleStyle = {
@@ -66,6 +70,23 @@ const PopularServices = () => {
     const headerTitleStyle = {
         color: theme.palette.text.primary,
     }
+
+    // Sideeffects
+    useEffect(()=>{
+        const url=`${process.env.REACT_APP_API_URL}/api/service/get-all-services/${servicesLimit}`;
+        const fetchServices=async()=>{
+            try{
+                const response=await fetch(url);
+                const data=await response.json();
+                console.log('Popular Services: ',data);
+                setServices(data);
+            }
+            catch(e){
+                console.log(e);
+            }
+        }
+        fetchServices();
+    },[])
 
   return (
     <div className={styles.container}>
@@ -76,8 +97,8 @@ const PopularServices = () => {
         </div>
         <div className={styles.dataContainer}>
             {
-                popularServices.map((service, index) => {
-                    return <PopularServiceCard key={index} service={service} />
+                services.map((service, index) => {
+                    return <PopularServiceCard key={index} index={index} service={service} />
                 })
             }
         </div>

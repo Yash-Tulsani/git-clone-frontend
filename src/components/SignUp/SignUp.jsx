@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from '@mui/material'
+import OAuth from '../OAuth/OAuth';
 
 const SignUp = () => {
 
@@ -68,7 +69,7 @@ const SignUp = () => {
     try {
       setLoading(true);
       setError(false);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -196,7 +197,7 @@ const SignUp = () => {
         />
       </div>
         <button disabled={loading} style={{backgroundColor:`${theme.palette.text.primary}`}} className='text-white p-3 rounded-lg uppercase hover:opacity-80'>{loading ? 'Loading...' : 'Sign Up'}</button>
-        {/* <button disabled={loading} style={{backgroundColor:`${theme.palette.secondary.main}`}} className='text-white p-3 rounded-lg uppercase hover:opacity-80'>{loading ? 'Loading...' : 'Continue with Google'}</button> */}
+        <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>

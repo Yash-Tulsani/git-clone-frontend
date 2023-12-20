@@ -1,12 +1,13 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from './Navbar.module.css'
 import { useTheme } from '@mui/material'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-import Select from 'react-select';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import GoogleTranslate from '../GoogleTranslate/GoogleTranslate'
+import { useSelector, useDispatch } from 'react-redux';
+import { signOut } from '../../redux/user/userSlice';
 
 const logos=[
     "Ministry_of_Rural_Development.png",
@@ -33,19 +34,25 @@ const navLinks=[
         link:"/contact"
     },
     {
-        name:"Status",
-        link:"/status"
+        name:"FAQ",
+        link:"/faq"
     },
     {
-        name:"FPO",
-        link:"/fpo"
+        name:"WDC",
+        link:"/wdcs"
     },
 ]
 
 const Navbar = () => {
+
+    const dispatch = useDispatch();
+
+    const { currentUser } = useSelector(state => state.user);
     // State Variables
     const theme = useTheme();
-    const matches768px=useMediaQuery('(max-width:768px)')
+    const matched768px=useMediaQuery('(max-width:768px)')
+    const matched600px=useMediaQuery('(max-width:600px)');
+    const matched1024px=useMediaQuery('(max-width:1024px)');
 
 
     // Styles
@@ -57,6 +64,30 @@ const Navbar = () => {
             fontSize: "0.75rem",
         }
     }
+
+    let loginButtonSize="medium";
+
+    if(matched1024px){
+        buttonStyle.fontSize="0.8rem";
+        loginButtonSize="small";
+    }
+    if(matched768px){
+        buttonStyle.fontSize="0.75rem";
+        loginButtonSize="small";
+    }
+    if(matched600px){
+        buttonStyle.fontSize="0.6rem";
+        loginButtonSize="small";
+    }
+
+    const handleSignOut = async () => {
+        try {
+          await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signout`);
+          dispatch(signOut())
+        } catch (error) {
+          console.log(error);
+        }
+    };
 
   return (
     <div style={{backgroundColor:theme.palette.primary.main}} className={styles.box}>
@@ -71,7 +102,7 @@ const Navbar = () => {
             }
         </div>
         {
-            !matches768px &&
+            !matched768px &&
             <div className={styles.navbarLinks}>
                 {
                     navLinks.map((navLink,index)=>(
@@ -86,13 +117,26 @@ const Navbar = () => {
         }
         
         <div className={styles.navbarButtonsContainer}>
-            <Button variant="contained" style={buttonStyle}>
-                Login
-            </Button>
+            {
+                !matched768px &&
+                <Link to="/signin">
+                    { currentUser ?  (<img src={currentUser.profilePicture} alt="profile" className='h-9 w-9 rounded-full object-cover' />) : 
+                    (
+                    <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
+                        Login
+                    </Button>
+                    )}
+                    
+                </Link>
+            }
+                {currentUser && <Button onClick={handleSignOut} variant="contained" size={loginButtonSize} style={buttonStyle}>
+                    Logout
+                </Button>
+                }
             <GoogleTranslate/>
         </div>
         {
-            matches768px &&
+            matched768px &&
             <HamburgerMenu/>
         }
         </div>

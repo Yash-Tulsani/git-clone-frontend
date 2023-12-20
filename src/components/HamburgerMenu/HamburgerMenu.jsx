@@ -12,9 +12,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
+import LoginIcon from '@mui/icons-material/Login';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
-import TroubleshootIcon from '@mui/icons-material/Troubleshoot';
+import QuizIcon from '@mui/icons-material/Quiz';
 import MenuIcon from '@mui/icons-material/Menu';
 import {Link} from 'react-router-dom'
 import styles from './HamburgerMenu.module.css'
@@ -34,6 +35,11 @@ export default function TemporaryDrawer() {
         href: '/'
     },
     {
+      name: "Login",
+      icon: <LoginIcon/>,
+      href: '/signin'
+    },
+    {
         name: "About",
         icon: <InfoIcon/>,
         href: '/about'
@@ -49,9 +55,9 @@ export default function TemporaryDrawer() {
         href: 'contact-us'
     },
     {
-        name: "Status",
-        icon: <TroubleshootIcon/>,
-        href: '/status'
+        name: "FAQ",
+        icon: <QuizIcon/>,
+        href: '/faq'
     },
   ]
 
@@ -103,7 +109,7 @@ export default function TemporaryDrawer() {
   return (
     <div>
         <React.Fragment>
-          <MenuIcon onClick={toggleDrawer('right', true)} className={styles.hamburgerMenuIcon}/>
+          <MenuIcon onClick={toggleDrawer('right', true)} fontSize='large' className={styles.hamburgerMenuIcon}/>
           <Drawer
             anchor={'right'}
             open={state['right']}

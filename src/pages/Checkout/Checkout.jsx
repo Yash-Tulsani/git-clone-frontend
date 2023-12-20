@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import "./Checkout.css"
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 // import CircularProgress from '@mui/material/CircularProgress';
 import { IconButton, CircularProgress, Snackbar, Alert, Button, ButtonGroup } from '@mui/material';
@@ -13,6 +13,8 @@ const Checkout = () => {
 
     const params = useParams();
     console.log(params);
+
+    const navigate = useNavigate();
 
     const [Data, setData] = useState(null);
 
@@ -29,6 +31,10 @@ const Checkout = () => {
                 setTotalAmount(res.data.minQuantity * res.data.price)
             })
             .catch(err => {
+                toast("Invalid Page. Not found. Redirecting You to Home Page");
+                setTimeout(() => {
+                    return navigate("/")
+                }, 3000);
                 console.log(err);
             })
 

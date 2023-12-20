@@ -1,46 +1,53 @@
-import React, {useEffect} from 'react'
-// import {FiSettings} from 'react-icons/fi';
-// import {TooltipComponent} from '@syncfusion/ej2-react-popups'
-// import { useTheme } from '@mui/material';
-// import { Outlet } from 'react-router-dom';
+import React, {useState} from 'react'
+import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
+
+import { WdcCreationForm } from '../../components/DashboardComponents/WdcCreationForm/WdcCreationForm';
+import { useSelector } from 'react-redux';
+import AddServiceForm from '../../components/DashboardComponents/AddServiceForm/AddServiceForm';
+import WDCAdmin from '../../components/DashboardComponents/WDCAdmin/WDCAdmin';
+import ChartsComponent from '../../components/DashboardComponents/ChartsComponent/ChartsComponent';
+import UserAdmin from '../../components/DashboardComponents/UserAdmin/UserAdmin';
 
 const Dashboard = () => {
-    // // States 
-    // const theme=useTheme();
 
-    // // Styles
-    // const settingButtonStyle={
-    //     backgroundColor: theme.palette.secondary.main,
-    //     borderRadius: '50%',
-    // }
+  const { currentUser } = useSelector(state => state.user)
+  console.log(currentUser, "Here is the user");
+  const [tab, setTab] = useState(0);
 
-    // // Local variables
-    // const activeMenu= false;
+  const RenderingComponent = ()=>{
 
-  return (
-    // <div className='flex relative'>
-    //     <div className='fixed right-4 bottom-4' style={{zIndex:'100'}}>
-    //         <TooltipComponent content='Settings' position='Top'>
-    //             <button type="button" style={settingButtonStyle} className='text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white'>
-    //                 <FiSettings/>
-    //             </button>
-    //         </TooltipComponent>
-    //     </div>
-    //     {
-    //         activeMenu?(
-    //             <div className='w-72 fixed sidebar'>
-    //                 {/* <DashboardSidebar/> */}
-    //                 Sidebar
-    //             </div>
-    //         ):(
-    //             <div className='w-0'>
-
-    //             </div>
-    //         )
-    //     }
+      return (
+        <div>
+          {
+            tab==0 &&  <WdcCreationForm/>
+          }
+          {
+            tab==1 &&  <AddServiceForm/>
+          }
+          { 
+            tab==2 && <WDCAdmin/>
+          }
+          {
+            tab==3 && <ChartsComponent />
+          }
+          {
+            tab==4 && <UserAdmin />
+          }
+        </div>
         
-    // </div>
-    <div>Dashboard</div>
+      )
+
+  }
+  
+  return (
+    <div className='grid grid-cols-12'>
+      <div className='col-span-2'>
+        <DashboardSidebar setTabFunction={setTab}/>
+      </div>
+      <div className='col-span-10'>
+        <RenderingComponent />
+      </div>
+    </div>
   )
 }
 
