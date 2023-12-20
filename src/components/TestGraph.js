@@ -30,14 +30,14 @@ const TestGraph = () => {
 
 
     return (
-        <div className='flex flex-col items-center mt-3'>
+        <div className='flex flex-col items-center mt-8'>
             <ButtonGroup variant="contained" aria-label="outlined primary button group">
                 <Button onClick={(event) => setGraphIndex(0)} >Monthly Performance</Button>
                 <Button onClick={(event) => setGraphIndex(1)} >District Performance</Button>
                 <Button onClick={(event) => setGraphIndex(2)} >State Performance Chart</Button>
                 {/* <Button onClick={(event)=>setTab("fpo")}>FPO</Button> */}
             </ButtonGroup>
-            <div className='w-[600px]'>
+            <div className='w-[800px] mt-10'>
                 {graphData ? (
                     <CChart
                         type="bar"
