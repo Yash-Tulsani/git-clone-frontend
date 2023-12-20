@@ -19,13 +19,83 @@ import TestGraph from './components/TestGraph';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TextToSpeech from './components/TestTextToSpeech';
 import AvailableWDCs from './pages/AvailableWDCs/AvailableWDCs';
+import OverallAnalysis from './components/DashboardComponents/OverallAnalysis/OverallAnalysis';
+import { ToastContainer, toast } from 'react-toastify';
+
+import Web3 from 'web3';
 
 function App() {
+
+  const providerURL = process.env.PROVIDER_URL;
+
+  useEffect(() => {
+    const web3 = new Web3(providerURL);
+    console.log(web3);
+  }, [])
+
+  function successFunction(pos) {
+    var crd = pos.coords;
+  
+    console.log("Your current position is:");
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  }
+
+  function errorFunction(error) {
+    console.log(error);
+  }
+
+  const getLocation1 = () =>{
+    if (navigator.geolocation) {
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (result) {
+          if (result.state === "granted") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction);
+          } else if (result.state === "prompt") {
+            console.log(result.state);
+            navigator.geolocation.getCurrentPosition(successFunction,errorFunction);
+          } else if (result.state === "denied") {
+            console.log("Prompt user to give permission"); 
+          }
+          result.onchange = function () {
+            console.log(result.state);
+          };
+        });
+    } else {
+      alert("Sorry Not available!");
+    }
+  }
+
+  useEffect(() => {
+
+    getLocation1()
+
+  }, [])
+
+
+  
 
 
   return (
     <Router>
       <Navbar />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
+        {/* Same as */}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
@@ -38,6 +108,7 @@ function App() {
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/profile" element={<Profile/>} /> 
         <Route path="/wdcs" element={<AvailableWDCs/>} />       
+        {/* <Route path="/analysis" element={<OverallAnalysis/>} />        */}
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="statistics" element={"Statistics"}/>
           <Route path="transactions" element={"Transactions"}/>

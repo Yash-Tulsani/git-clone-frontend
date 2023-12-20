@@ -10,10 +10,10 @@ import styles from './AvailableWDCsCard.module.css'
 import { Link } from 'react-router-dom';
 const jsonList = require('../../components/data.json');
 
-export default function AvailableWDCsCard({wdc}) {
-  console.log(jsonList)
+export default function AvailableWDCsCard({open,setOpen,handleOpen,handleClose,wdc,index,setCurrentWDC}) {
     const myArray = [0,1,2,3,4]
     const theme=useTheme()
+    
 
     // Styles
     const serviceHeadingStyle={
@@ -43,13 +43,20 @@ export default function AvailableWDCsCard({wdc}) {
       color: theme.palette.secondary.main,
     }
 
+
+    // Event Handlers
+    const handleBuyClick = () => {
+      setCurrentWDC(wdc);
+      handleOpen();
+    }
+
   return (
     <Card>
       <CardActionArea>
         <Box className={styles.serviceImageContainer} sx={serviceImageContainerStyle}>
             <CardMedia
                 component="img"
-                image={`https://picsum.photos/200/300?random=${Math.random()*100}`}
+                image={`/images/demoImages/${index+1}.jpg`}
                 alt="Loading..."
                 sx={serviceImageStyle}
                 className={styles.serviceImage}
@@ -73,12 +80,12 @@ export default function AvailableWDCsCard({wdc}) {
         
         </CardContent>
         <Box className={styles.serviceButtonsContainer}>
-              <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
+              <Button variant="contained" sx={serviveButtonStyle} onClick={handleBuyClick} color="primary" className={styles.serviceButton}>
                   Buy
               </Button>
-              <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
+              {/* <Button variant="contained" sx={serviveButtonStyle} color="primary" className={styles.serviceButton}>
                   Know More
-              </Button>
+              </Button> */}
         </Box>
       </CardActionArea>
     </Card>

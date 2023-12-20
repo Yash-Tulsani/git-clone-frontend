@@ -47,7 +47,7 @@ export default function ActionAreaCard({service,index}) {
         <Box className={styles.serviceImageContainer} sx={serviceImageContainerStyle}>
             <CardMedia
                 component="img"
-                image={`/images/demoImages/${index}.jpg`}
+                image={`/images/demoImages/${index+1}.jpg`}
                 alt="Loading..."
                 sx={serviceImageStyle}
                 className={styles.serviceImage}

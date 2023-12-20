@@ -101,7 +101,7 @@ const UserAdmin = () => {
                 <div className='mb-3'>
                     <Button onClick={(event)=>setdisplayTab("Investment")} style={{marginRight: '10px'}}>Investments</Button>
                     <Button onClick={(event)=>setdisplayTab("Transactions History")}>Transactions History</Button>
-                </div>
+                </div> 
 
                 {
                     displayTab=="Investment" && (<div>

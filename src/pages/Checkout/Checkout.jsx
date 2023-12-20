@@ -9,11 +9,15 @@ import minusIcon from "./minus.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useSelector } from 'react-redux';
+
 const Checkout = () => {
 
     const params = useParams();
     console.log(params);
 
+    const { currentUser } = useSelector(state=>state.user)
+ 
     const navigate = useNavigate();
 
     const [Data, setData] = useState(null);
@@ -40,6 +44,28 @@ const Checkout = () => {
 
 
     }, []);
+
+    const submitForm = (event)=>{
+
+        axios.post(`${process.env.REACT_APP_API_URL}/api/transaction/`, {
+            serviceInfo: Data,
+            userInfo: currentUser,
+            quantity: quantity,
+            totalAmount: totalAmount
+        })
+            .then(res=>res.data)
+            .then(res=>{
+                console.log(res);
+                toast("Transactions Succesfull!");
+                setTimeout(() => {
+                    navigate("/dashboard")
+                }, 3000);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+
+    }   
 
 
     const [tab, setTab] = useState("service");
@@ -194,7 +220,7 @@ const Checkout = () => {
                                     <div className='text-right text-2xl mb-3'>
                                         &#8377;{totalAmount}
                                     </div>
-                                    <Button variant="contained" color='success' style={{ width: "100%" }}>Make Payment</Button>
+                                    <Button variant="contained" color='success' style={{ width: "100%" }} onClick={submitForm}>Make Payment</Button>
 
                                 </div>
                             </div>
