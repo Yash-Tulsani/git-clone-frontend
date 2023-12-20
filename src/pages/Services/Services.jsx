@@ -18,20 +18,10 @@ import 'leaflet/dist/leaflet.css';
 import theme from '../../theme';
 import L from 'leaflet';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 const URL = process.env.REACT_APP_API_URL;
 
 const Services = () => {
-  const buyFunc = (id) => {
-    const data = axios
-      .get(`${URL}/api/service/${id}`)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const [services, setServices] = React.useState([]);
   React.useEffect(() => {
@@ -121,7 +111,7 @@ const Services = () => {
             spacing={2}
             style={{ marginBottom: '20px' }}
           >
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={7}>
               <MapContainer
                 ref={mapRef}
                 center={
@@ -163,7 +153,7 @@ const Services = () => {
               </MapContainer>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={5}>
               <Grid
                 container
                 spacing={2}
@@ -229,7 +219,7 @@ const Services = () => {
                             }}
                           />
 
-                          <CardContent>
+<CardContent>
                             <Typography variant="h6">
                               {service.name}
                             </Typography>
@@ -237,7 +227,7 @@ const Services = () => {
                               variant="subtitle1"
                               color="textSecondary"
                             >
-                              {service.category}
+                             {service.category}
                             </Typography>
                             <Typography
                               variant="body2"
@@ -247,15 +237,39 @@ const Services = () => {
                               {service.description}
                             </Typography>
 
-                            {/* Buttons */}
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              style={{ marginTop: '10px', marginRight: '10px' }}
-                              onClick={() => buyFunc(service._id)}
+                            {/* Additional service attributes */}
+                            <Typography
+                              variant="body2"
+                              color="textSecondary"
+                              style={{ marginTop: '10px' }}
                             >
-                              Buy Now
-                            </Button>
+                              Quantity Left: {service.quantityLeft}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              color="textSecondary"
+                              style={{ marginTop: '10px' }}
+                            >
+                              State: {service.state}
+                            </Typography>
+                            <Typography
+                              variant="body2"
+                              color="textSecondary"
+                              style={{ marginTop: '10px' }}
+                            >
+                              Price: ${service.price}
+                            </Typography>
+
+                            {/* Buttons */}
+                            <Link to={`/checkout/${service._id}`}>
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                style={{ marginTop: '10px', marginRight: '10px' }}
+                              >
+                                Buy Now
+                              </Button>
+                            </Link>
                             <Button
                               variant="contained"
                               color="primary"

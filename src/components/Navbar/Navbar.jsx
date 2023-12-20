@@ -7,7 +7,7 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import GoogleTranslate from '../GoogleTranslate/GoogleTranslate'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteUserStart, deleteUserSuccess, deleteUserFailure } from '../../redux/user/userSlice';
+import { signOut } from '../../redux/user/userSlice';
 
 const logos=[
     "Ministry_of_Rural_Development.png",
@@ -80,22 +80,14 @@ const Navbar = () => {
         loginButtonSize="small";
     }
 
-    const handleDeleteAccount = async () => {
+    const handleSignOut = async () => {
         try {
-            dispatch(deleteUserStart());
-            const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-                method: 'DELETE',
-            });
-            const data = await res.json();
-            if(data.success===false){
-                dispatch(deleteUserFailure(data));
-                return;
-            }
-            dispatch(deleteUserSuccess(data));
-        }catch(error) {
-            dispatch(deleteUserFailure(error));
+          await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signout`);
+          dispatch(signOut())
+        } catch (error) {
+          console.log(error);
         }
-    }
+    };
 
   return (
     <div style={{backgroundColor:theme.palette.primary.main}} className={styles.box}>
@@ -137,6 +129,10 @@ const Navbar = () => {
                     
                 </Link>
             }
+                {currentUser && <Button onClick={handleSignOut} variant="contained" size={loginButtonSize} style={buttonStyle}>
+                    Logout
+                </Button>
+                }
             <GoogleTranslate/>
         </div>
         {
