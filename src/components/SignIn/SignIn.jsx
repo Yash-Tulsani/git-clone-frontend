@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTheme } from '@mui/material'
 import { signInStart, signInSuccess, signInFailure } from '../../redux/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import OAuth from '../OAuth/OAuth';
 
 const SignIn = () => {
 
@@ -19,7 +20,7 @@ const SignIn = () => {
 
   console.log(formData); 
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       dispatch(signInStart());
@@ -73,7 +74,7 @@ const SignIn = () => {
         />
       </div>
         <button disabled={loading} style={{backgroundColor:`${theme.palette.text.primary}`}} className='text-white p-3 rounded-lg uppercase hover:opacity-80'>{loading ? 'Loading...' : 'Sign In'}</button>
-        {/* <button disabled={loading} style={{backgroundColor:`${theme.palette.secondary.main}`}} className='text-white p-3 rounded-lg uppercase hover:opacity-80'>{loading ? 'Loading...' : 'Continue with Google'}</button> */}
+        <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Don&apos;t have an account?</p>
