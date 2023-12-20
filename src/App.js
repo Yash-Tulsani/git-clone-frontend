@@ -17,6 +17,7 @@ import SignUp from './components/SignUp/SignUp';
 import Profile from './components/Profile/Profile';
 import TestGraph from './components/TestGraph';
 import Dashboard from './pages/Dashboard/Dashboard';
+import AvailableWDCs from './pages/AvailableWDCs/AvailableWDCs';
 
 function App() {
 
@@ -34,7 +35,8 @@ function App() {
         <Route path="/fpo" element={<Fpo/>} />
         <Route path="/signin" element={<SignIn/>} />
         <Route path="/signup" element={<SignUp/>} />
-        <Route path="/profile" element={<Profile/>} />        
+        <Route path="/profile" element={<Profile/>} /> 
+        <Route path="/wdcs" element={<AvailableWDCs/>} />       
         <Route path="/dashboard" element={<Dashboard/>}>
           <Route path="statistics" element={"Statistics"}/>
           <Route path="transactions" element={"Transactions"}/>
