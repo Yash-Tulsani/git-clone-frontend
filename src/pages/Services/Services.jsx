@@ -98,10 +98,10 @@ const Services = () => {
           flexDirection: 'column',
         }}
       >
-        <Container
+        <div
           style={{
             flex: 4,
-            marginLeft: '40px',
+            marginLeft: '10px',
             marginRight: '0px',
             padding: '20px',
           }}
@@ -257,7 +257,7 @@ const Services = () => {
                               color="textSecondary"
                               style={{ marginTop: '10px' }}
                             >
-                              Price: ${service.price}
+                              Price: ₹{service.price}
                             </Typography>
 
                             {/* Buttons */}
@@ -286,7 +286,7 @@ const Services = () => {
               </Grid>
             </Grid>
           </Grid>
-        </Container>
+        </div>
       </div>
     </ThemeProvider>
   );

@@ -21,6 +21,7 @@ const DashboardSidebar = (props) => {
         <MenuItem onClick={()=>props.setTabFunction(1)}> Add Service</MenuItem>
         <MenuItem onClick={()=>props.setTabFunction(2)}> WDC Admin</MenuItem>
         <MenuItem onClick={()=>props.setTabFunction(3)}> Statistics</MenuItem>
+        <MenuItem onClick={()=>props.setTabFunction(4)}> User Admin</MenuItem>
       </Menu>
     </Sidebar>
   )
