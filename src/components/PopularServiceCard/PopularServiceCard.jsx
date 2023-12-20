@@ -10,7 +10,7 @@ import styles from './PopularServiceCard.module.css'
 import { Link } from 'react-router-dom';
 import { generateRandomNumber } from '../../utils/helper';
 
-export default function ActionAreaCard({service}) {
+export default function ActionAreaCard({service,index}) {
     const theme=useTheme()
 
     // Styles
@@ -47,7 +47,7 @@ export default function ActionAreaCard({service}) {
         <Box className={styles.serviceImageContainer} sx={serviceImageContainerStyle}>
             <CardMedia
                 component="img"
-                image={`/images/demoImages/${generateRandomNumber(1,13)}.jpg`}
+                image={`/images/demoImages/${index}.jpg`}
                 alt="Loading..."
                 sx={serviceImageStyle}
                 className={styles.serviceImage}

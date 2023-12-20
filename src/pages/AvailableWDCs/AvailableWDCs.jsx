@@ -1,4 +1,6 @@
 import React, {useState,useEffect} from 'react'
+import JoinWDCModal from '../../components/JoinWDCModal/JoinWDCModal'
+import styles from './AvailableWDCs.module.css'
 
 const AvailableWDCs = () => {
   // States
@@ -6,7 +8,6 @@ const AvailableWDCs = () => {
 
   // Effects
   useEffect(()=>{
-    // fetch(`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`)
     async function fetchData(){
       console.log('Fetching data from API....')
       const response=await fetch(`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`)
@@ -17,8 +18,9 @@ const AvailableWDCs = () => {
     fetchData()
   },[])
   return (
-    <section className={StyleSheet.container}>
-
+    <section className={styles.container}>
+        <JoinWDCModal/>
+        <h1>Testing...</h1>
     </section>
   )
 }
