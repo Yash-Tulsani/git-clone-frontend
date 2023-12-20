@@ -34,7 +34,19 @@ const ChartsComponent = () => {
 
     useEffect(() => {
 
-        axios.get(urls[graphIndex])
+        if(graphIndex==3) {
+            setgraphData({
+                labels: ["Wasteshed Royapettah", "Wasteshed Saidapet", "Tambarm WDC"],
+                datasets: [
+                    {
+                        label: 'Overall Monthly Revenue',
+                        backgroundColor: '#0E2E50',
+                        data: [20021, 30001, 7500],
+                    },
+                ],
+        })
+        } else {
+            axios.get(urls[graphIndex])
             .then((res) => {
                 console.log(res.data, "Chart API");
                 setgraphData(res.data)
@@ -42,6 +54,9 @@ const ChartsComponent = () => {
             .catch(err => {
                 console.log(err);
             })
+        }
+
+        
 
     }, [graphIndex, year, state])
 
@@ -52,6 +67,7 @@ const ChartsComponent = () => {
                 <Button onClick={(event) => setGraphIndex(0)} >Monthly Performance</Button>
                 <Button onClick={(event) => setGraphIndex(1)} >District Performance</Button>
                 <Button onClick={(event) => setGraphIndex(2)} >State Performance Chart</Button>
+                <Button onClick={(event) => setGraphIndex(3)} >WDC Performance Chart</Button>
                 {/* <Button onClick={(event)=>setTab("fpo")}>FPO</Button> */}
             </ButtonGroup>
             <div className='w-[800px] mt-10'>

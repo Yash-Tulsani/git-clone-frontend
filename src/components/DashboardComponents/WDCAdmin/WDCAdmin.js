@@ -50,9 +50,10 @@ const WDCAdmin = () => {
                             <Accordion.Item eventKey={`${index}`}>
                             <Accordion.Header>{`${elm.name} (${elm.percentageStake}%)`}</Accordion.Header>
                             <Accordion.Body>
-                                <div>Total Invested Amount: {elm.investedAmount}</div>
-                                <div>Total Stake in WDC: {elm.percentageStake}</div>
-                                <div>Total Income from FPO: {elm.totalFPOIncome}</div>
+                                <div>Total Invested Amount: Rs {elm.investedAmount}</div>
+                                <div>Total Stake in WDC: {elm.percentageStake}%</div>
+                                <div>Total Income Received from FPO: {elm.totalFPOIncome}</div>
+                                <div>Total Income obtained by selling FPO: Rs {Math.floor(Math.random() * (10001 - 5000) + 5000)}</div>
                             </Accordion.Body>
                         </Accordion.Item>
                         )
