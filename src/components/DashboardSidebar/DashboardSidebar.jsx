@@ -2,7 +2,7 @@ import React from 'react'
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
 
-const DashboardSidebar = () => {
+const DashboardSidebar = (props) => {
   return (
     <Sidebar>
       <Menu
@@ -17,9 +17,10 @@ const DashboardSidebar = () => {
           },
         }}
       >
-        <MenuItem component={<Link to="/documentation" />}> Documentation</MenuItem>
-        <MenuItem component={<Link to="/calendar" />}> Calendar</MenuItem>
-        <MenuItem component={<Link to="/e-commerce" />}> E-commerce</MenuItem>
+        <MenuItem onClick={()=>props.setTabFunction(0)}> Add WDC</MenuItem>
+        <MenuItem onClick={()=>props.setTabFunction(1)}> Add Service</MenuItem>
+        <MenuItem onClick={()=>props.setTabFunction(2)}> WDC Admin</MenuItem>
+        <MenuItem onClick={()=>props.setTabFunction(3)}> Statistics</MenuItem>
       </Menu>
     </Sidebar>
   )
