@@ -38,8 +38,8 @@ const navLinks=[
         link:"/faq"
     },
     {
-        name:"FPO",
-        link:"/fpo"
+        name:"WDC",
+        link:"/wdcs"
     },
 ]
 
