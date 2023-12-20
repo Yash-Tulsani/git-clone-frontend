@@ -8,9 +8,8 @@ import { Box, Button, CardActionArea } from '@mui/material';
 import { useTheme } from '@mui/material';
 import styles from './PopularServiceCard.module.css'
 import { Link } from 'react-router-dom';
-import { generateRandomNumber } from '../../utils/helper';
 
-export default function ActionAreaCard({service}) {
+export default function ActionAreaCard({wdc}) {
     const theme=useTheme()
 
     // Styles
@@ -34,7 +33,7 @@ export default function ActionAreaCard({service}) {
         },
         width: "100%",
     }
-    const wdcNameStyle={
+    const wdcStatusStyle={
       color: theme.palette.secondary.main,
     }
     const availableAmountStyle={
@@ -47,7 +46,7 @@ export default function ActionAreaCard({service}) {
         <Box className={styles.serviceImageContainer} sx={serviceImageContainerStyle}>
             <CardMedia
                 component="img"
-                image={`/images/demoImages/${generateRandomNumber(1,13)}.jpg`}
+                image={`https://picsum.photos/200/300?random=${Math.random()*100}`}
                 alt="Loading..."
                 sx={serviceImageStyle}
                 className={styles.serviceImage}
@@ -55,11 +54,11 @@ export default function ActionAreaCard({service}) {
         </Box>
         <CardContent>
           <Typography sx={serviceHeadingStyle} className={styles.serviceName} gutterBottom variant="h5" component="div" color="text.primary">
-            {service.name}
+            {wdc.name}
           </Typography>
           <div className={styles.wdcContainer}>
-            <span className={styles.wdcNameHead}>Associated WDC:</span>
-            <span className={styles.wdcName} style={wdcNameStyle}>{service.WDC_id.name}</span>
+            <span className={styles.wdcStatusHead}>Associated WDC:</span>
+            <span className={styles.wdcStatus} style={wdcStatusStyle}>{service.WDC_id.name}</span>
           </div>
           <div className={styles.availableAmountContainer}>
             <span className={styles.availableAmountHead}>Quantitiy Left: </span>
