@@ -4,4 +4,106 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+}
+
+.headerSection{
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading{
+    font-size: 1.8rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+}
+
+.subHeadingContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.detailsSection{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* background-color: darkcyan; */
+    width: 100%;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.detailsHeading{
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.detail{
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.paymentDetails{
+    width: 100%;
+    /* background-color: palegreen; */
+    padding: 0 30px;
+}
+
+.stakeContainer,.amountRequiredContainer{
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    /* background-color: aquamarine; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stakeContent{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stakeHead,.amountRequiredHead{
+    font-size: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
+
+.amountRequiredContent{
+    font-size: 1rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.buttonSection{
+    width: 100%;
+    /* background-color: rgb(97, 179, 179); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%
+}
+
+.button{
+    width: 40%;
 }
