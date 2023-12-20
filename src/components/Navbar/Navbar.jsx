@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import styles from './Navbar.module.css'
 import { useTheme } from '@mui/material'
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import GoogleTranslate from '../GoogleTranslate/GoogleTranslate'
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteUserStart, deleteUserSuccess, deleteUserFailure } from '../../redux/user/userSlice';
 
 const logos=[
     "Ministry_of_Rural_Development.png",
@@ -42,6 +44,10 @@ const navLinks=[
 ]
 
 const Navbar = () => {
+
+    const dispatch = useDispatch();
+
+    const { currentUser } = useSelector(state => state.user);
     // State Variables
     const theme = useTheme();
     const matched768px=useMediaQuery('(max-width:768px)')
@@ -74,7 +80,22 @@ const Navbar = () => {
         loginButtonSize="small";
     }
 
-
+    const handleDeleteAccount = async () => {
+        try {
+            dispatch(deleteUserStart());
+            const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+                method: 'DELETE',
+            });
+            const data = await res.json();
+            if(data.success===false){
+                dispatch(deleteUserFailure(data));
+                return;
+            }
+            dispatch(deleteUserSuccess(data));
+        }catch(error) {
+            dispatch(deleteUserFailure(error));
+        }
+    }
 
   return (
     <div style={{backgroundColor:theme.palette.primary.main}} className={styles.box}>
@@ -107,9 +128,13 @@ const Navbar = () => {
             {
                 !matched768px &&
                 <Link to="/signin">
+                    { currentUser ?  (<img src={currentUser.profilePicture} alt="profile" className='h-9 w-9 rounded-full object-cover' />) : 
+                    (
                     <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
                         Login
                     </Button>
+                    )}
+                    
                 </Link>
             }
             <GoogleTranslate/>
