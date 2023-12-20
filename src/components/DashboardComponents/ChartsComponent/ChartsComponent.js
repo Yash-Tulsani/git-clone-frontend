@@ -15,7 +15,8 @@ const ChartsComponent = () => {
 
     const urls = [`${process.env.REACT_APP_API_URL}/api/charts/yearChart/${year}`,
         `${process.env.REACT_APP_API_URL}/api/charts/districtChart/${state}/${year}`,
-        `${process.env.REACT_APP_API_URL}/api/charts/stateChart/${year}`
+        `${process.env.REACT_APP_API_URL}/api/charts/stateChart/${year}`,
+        `${process.env.REACT_APP_API_URL}/api/charts/fpoChart/${year}`
     ]
     const [graphIndex, setGraphIndex] = useState(0); 
     const indianStates = [
@@ -32,20 +33,11 @@ const ChartsComponent = () => {
         "2021"
       ]
 
+      const [showFPO, setshowFPO] = useState(0)
+
     useEffect(() => {
 
-        if(graphIndex==3) {
-            setgraphData({
-                labels: ["Wasteshed Royapettah", "Wasteshed Saidapet", "Tambarm WDC"],
-                datasets: [
-                    {
-                        label: 'Overall Monthly Revenue',
-                        backgroundColor: '#0E2E50',
-                        data: [20021, 30001, 7500],
-                    },
-                ],
-        })
-        } else {
+      
             axios.get(urls[graphIndex])
             .then((res) => {
                 console.log(res.data, "Chart API");
@@ -54,7 +46,7 @@ const ChartsComponent = () => {
             .catch(err => {
                 console.log(err);
             })
-        }
+        
 
         
 
@@ -67,7 +59,8 @@ const ChartsComponent = () => {
                 <Button onClick={(event) => setGraphIndex(0)} >Monthly Performance</Button>
                 <Button onClick={(event) => setGraphIndex(1)} >District Performance</Button>
                 <Button onClick={(event) => setGraphIndex(2)} >State Performance Chart</Button>
-                <Button onClick={(event) => setGraphIndex(3)} >WDC Performance Chart</Button>
+                {/* <Button onClick={(event) => setGraphIndex(3)} >WDC Performance Chart</Button> */}
+                <Button onClick={(event) => setGraphIndex(3)} >FPO Performance Chart</Button>
                 {/* <Button onClick={(event)=>setTab("fpo")}>FPO</Button> */}
             </ButtonGroup>
             <div className='w-[800px] mt-10'>
@@ -79,9 +72,7 @@ const ChartsComponent = () => {
                     />
                 ) : (<div>Loading</div>)}
 
-                {
-
-                }
+             
             </div>
 
             <div className='mb-3'>
@@ -109,10 +100,16 @@ const ChartsComponent = () => {
                 }
                     
             </div>
-
-
-
             
+            {/* <ButtonGroup variant="contained" aria-label="outlined primary button group">
+                <Button onClick={(event) => setshowFPO(0)} >Tambaram Farmer Producer Organization</Button>
+                <Button onClick={(event) => setshowFPO(1)} >Wasteshed Royapettah</Button>
+                <Button onClick={(event) => setshowFPO(2)} >Wasteshed Saidapet</Button>
+
+            </ButtonGroup> */}
+
+
+                
         </div>
     </div>
   )
