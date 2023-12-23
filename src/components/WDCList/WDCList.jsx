@@ -72,31 +72,31 @@ const headCells = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Name',
+    label: 'WDC_name',
   },
   {
     id: 'FPO_name',
     numeric: true,
     disablePadding: false,
-    label: 'Name of FPO',
+    label: 'amount',
   },
   {
     id: 'district',
     numeric: true,
     disablePadding: false,
-    label: 'District',
+    label: 'buyer_name',
   },
   {
     id: 'state',
     numeric: true,
     disablePadding: false,
-    label: 'State',
+    label: 'seller_name',
   },
   {
     id: 'status',
     numeric: true,
     disablePadding: false,
-    label: 'Status',
+    label: 'service_name',
   },
 ];
 
@@ -212,23 +212,31 @@ EnhancedTableToolbar.propTypes = {
 };
 
 export default function WDCList(props) {
-  const [rows, setRows] = React.useState([]);
-  React.useEffect(() => {
-    const populateServices = () => {
-      const data = axios
-        .get(`${URL}/api/wdc/get-all-wdcs`)
-        .then((response) => {
-          console.log(response.data)
-          response.data.map(elem => 
-            setRows([...rows,createData(elem.name, elem.FPO_name, elem.district, elem.state, elem.status)]),
-          )
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-    populateServices();
-  }, []);
+  let array = []
+  props.trans.map((elem, i) => 
+  array.push(createData(i+1, elem.WDC_name, elem.amount, elem.buyer_name, elem.seller_name, elem.service_name, elem.district, elem.state)),
+  )
+  console.log(array, 'this is trans')
+  const rows = array
+  //setRows(array)
+  
+ // if(array.length > 0 ) setRows(array)
+  // React.useEffect(() => {
+  //   const populateServices = () => {
+  //     const data = axios
+  //       .get(`${URL}/api/wdc/get-all-wdcs`)
+  //       .then((response) => {
+  //         console.log(response.data)
+  //         response.data.map(elem => 
+  //           setRows([...rows,createData(elem.name, elem.FPO_name, elem.district, elem.state, elem.status)]),
+  //         )
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   };
+  //   populateServices();
+  // }, []);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
