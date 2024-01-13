@@ -22,15 +22,15 @@ import AvailableWDCs from './pages/AvailableWDCs/AvailableWDCs';
 import OverallAnalysis from './components/DashboardComponents/OverallAnalysis/OverallAnalysis';
 import { ToastContainer, toast } from 'react-toastify';
 
-import Web3 from 'web3';
+// import Web3 from 'web3';
 
 function App() {
 
   const providerURL = process.env.PROVIDER_URL;
 
   useEffect(() => {
-    const web3 = new Web3(providerURL);
-    console.log(web3);
+    // const web3 = new Web3(providerURL);
+    // console.log(web3);
   }, [])
 
   function successFunction(pos) {
