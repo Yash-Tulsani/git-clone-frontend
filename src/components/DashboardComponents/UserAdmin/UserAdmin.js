@@ -21,7 +21,8 @@ const UserAdmin = () => {
     const {currentUser} = useSelector(state=> state.user);
 
     console.log(currentUser, "This is the current user");
-
+    const [dataBuy, setDataBuy] = useState([])
+    const [dataSold, setDataSold] = useState([])
     const [graphData, setGraphData] = useState(null)
 
     useEffect(() => {
@@ -85,7 +86,8 @@ const UserAdmin = () => {
             .then(data=>{
                 console.log(data,"This is the data");
                 
-
+                setDataBuy(data.buyData)
+                setDataSold(data.sellData)
             })
             .catch(err=>{
                 console.log(err);
@@ -96,10 +98,10 @@ const UserAdmin = () => {
     <div className='p-6'>
         {
             userData ? (<div>
-                {/* <div className='mb-3'>
-                    <Button onClick={(event)=>setdisplayTab("Investment")}>Investments</Button>
+                <div className='mb-3'>
+                    <Button onClick={(event)=>setdisplayTab("Investment")} style={{marginRight: '10px'}}>Investments</Button>
                     <Button onClick={(event)=>setdisplayTab("Transactions History")}>Transactions History</Button>
-                </div> */}
+                </div> 
 
                 {
                     displayTab=="Investment" && (<div>
@@ -139,19 +141,25 @@ const UserAdmin = () => {
                     displayTab=="Transactions History" && (
                         <div>
                             <div className='text-2xl font-bold mb-3'>Transactions</div>
-                            <Button onClick={(event)=>setTransactionTab(0)}>Sold Transactions</Button>
+                            <Button onClick={(event)=>setTransactionTab(0)} style={{marginRight: '10px'}}>Sold Transactions</Button>
                             <Button onClick={(event)=>setTransactionTab(1)}>Purchased Transactions</Button>
                             {
                                 transactionTab==0 && (
                                     <div className='p-3'>
-                                        <WDCList />
+                                        {
+                                            dataSold && <WDCList  trans={dataSold}/>
+                                        }
+                                        
                                     </div>
                                 )
                             }
                             {
                                 transactionTab==1 && (
                                     <div className='p-3'>
-                                        <WDCList />
+                                        {
+                                            dataBuy &&  <WDCList trans={dataBuy}/>
+                                        }
+                                       
                                     </div>
                                 )
                             }
