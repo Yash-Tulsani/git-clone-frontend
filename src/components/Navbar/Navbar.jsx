@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styles from './Navbar.module.css'
 import { useTheme } from '@mui/material'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu'
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -65,6 +65,8 @@ const Navbar = () => {
         }
     }
 
+    const navigate = useNavigate();
+
     let loginButtonSize="medium";
 
     if(matched1024px){
@@ -83,7 +85,9 @@ const Navbar = () => {
     const handleSignOut = async () => {
         try {
           await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signout`);
+          
           dispatch(signOut())
+          navigate("/");
         } catch (error) {
           console.log(error);
         }
@@ -119,16 +123,24 @@ const Navbar = () => {
         <div className={styles.navbarButtonsContainer}>
             {
                 !matched768px &&
-                <Link to="/signin">
-                    { currentUser ?  (<img src={currentUser.profilePicture} alt="profile" className='h-9 w-9 rounded-full object-cover' />) : 
-                    (
-                    <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
-                        Login
-                    </Button>
-                    )}
-                    
-                </Link>
-            }
+                <>
+                {
+                    currentUser ? (
+                        <Link to={"/dashboard"}>
+                            <img src={currentUser.profilePicture} alt="profile" className='h-9 w-9 rounded-full object-cover' />
+                        </Link>
+                    ) : (
+                        (
+                            <Link to={"/signin"}>
+                                <Button variant="contained" size={loginButtonSize} style={buttonStyle}>
+                                    Login
+                                </Button>
+                            </Link>
+                            )
+                    )
+                }
+                    </>
+                }
                 {currentUser && <Button onClick={handleSignOut} variant="contained" size={loginButtonSize} style={buttonStyle}>
                     Logout
                 </Button>
