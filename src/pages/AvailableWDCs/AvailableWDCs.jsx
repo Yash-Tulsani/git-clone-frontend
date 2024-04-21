@@ -29,7 +29,7 @@ const AvailableWDCs = () => {
 
     // Sideeffects
     useEffect(()=>{
-        const url=`http://localhost:5000/api/wdc/get-all-wdcs`;
+        const url=`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs`;
         const fetchServices=async()=>{
             try{
                 const response=await fetch(url);
