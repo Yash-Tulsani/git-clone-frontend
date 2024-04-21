@@ -29,12 +29,13 @@ const AvailableWDCs = () => {
 
     // Sideeffects
     useEffect(()=>{
-        const url=`${process.env.REACT_APP_API_URL}/api/wdc/get-all-wdcs-with-populate`;
+        const url=`http://localhost:5000/api/wdc/get-all-wdcs`;
         const fetchServices=async()=>{
             try{
                 const response=await fetch(url);
                 const data=await response.json();
                 console.log('Popular Services: ',data);
+                // console.log(data, );
                 setWdcs(data);
             }
             catch(e){
