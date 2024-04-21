@@ -6,7 +6,6 @@ import chatIcon from "./chat1.png";
 import closeIcon from "./close.png";
 import sendIcon from "./send.png";
 import sihIcon from "./sih.jpg";
-import acios from "axios";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import SpeechRecognition, {
