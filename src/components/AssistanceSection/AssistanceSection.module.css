@@ -108,10 +108,32 @@
     color: whitesmoke;
 }
 
+@media (max-width: 400px){
+    .heading{
+        font-size: 0.5rem;
+        line-height: 12px;
+    }
+    .contactInfoContainer{
+        gap: 8px;
+    }
+    
+    .subHeading{
+        font-size: 0.3rem;
+    }
+    .contactInfoData{
+        font-size: 0.3rem;
+    }
+    .figure{
+        height: 260px;
+    }
+    .box{
+        min-height: 270px;
+    }
+}
 
 @media (min-width:400px){
     .heading{
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         line-height: 15px;
     }
     .contactInfoContainer{
@@ -123,6 +145,12 @@
     }
     .contactInfoData{
         font-size: 0.5rem;
+    }
+    .figure{
+        height: 280px;
+    }
+    .box{
+        min-height: 290px;
     }
 }
 
@@ -138,6 +166,12 @@
     .contactInfoData{
         font-size: 0.7rem;
     }
+    .figure{
+        height: 300px;
+    }
+    .box{
+        min-height: 310px;
+    }
 }
 
 @media (min-width: 768px){
@@ -151,6 +185,12 @@
     }
     .contactInfoData{
         font-size: 0.8rem;
+    }
+    .figure{
+        height: 380px;
+    }
+    .box{
+        min-height: 390px;
     }
 }
 
@@ -166,6 +206,12 @@
     }
     .contactInfoData{
         font-size: 1.1rem;
+    }
+    .figure{
+        height: 480px;
+    }
+    .box{
+        min-height: 490px;
     }
 }
 

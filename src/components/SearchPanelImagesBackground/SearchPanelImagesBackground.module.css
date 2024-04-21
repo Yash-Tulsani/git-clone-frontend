@@ -1,14 +1,25 @@
 .container{
-    background: url(/public/images/farm-worker-driving-tractor-spraying-green-meadow-generated-by-ai.jpg);
-    z-index: 5;
-    width: 40%;
-    height: calc(100% + 50px);
-    position: absolute;
-    top: 0px;
+    z-index: 0;
+    width: 85%;
+    height: 100%;
+    /* position: absolute;
+    top: -10%;
     right: 0px;
     background-repeat: no-repeat;
     background-position: right;
-    /* background-color: aquamarine; */
-    background-size: contain;
-    background-blend-mode: overlay;
+    background-color: aquamarine;
+    background-size: contain; */
+    /* background-color: cadetblue; */
+    position: absolute;
+    top: -25%;
+    right: -20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.9;
+}
+
+.banner{
+    width: 100%;
+    aspect-ratio: 1;
 }

@@ -5,6 +5,7 @@ import AvailableWDCsCard from '../../components/AvailableWDCsCard/AvaliableWDCsC
 import JoinWDCModal from '../../components/JoinWDCModal/JoinWDCModal'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import {toast} from 'react-toastify'
 
 const AvailableWDCs = () => {
     // State variables
@@ -61,7 +62,10 @@ const AvailableWDCs = () => {
             </div>
             <JoinWDCModal open={open} setOpen={setOpen} wdc={currentWDC} handleOpen={handleOpen} handleClose={handleClose} />
         </div>):
-    <Navigate to="/signin" />
+    <>
+    {toast.error('Please Login to continue')}
+    <Navigate to='/signin'/>
+    </>
   }
 }
 
